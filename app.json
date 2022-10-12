@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/home/home",
+    "pages/index/index"
+  ],
+  "subpackages": [{
+      "root": "packageA",
+      "pages": [
+        "pages/cat/cat",
+        "pages/dog/dog"
+      ]
+    },
+    {
+      "root": "packageB",
+      "name": "pack2",
+      "pages": [
+        "pages/apple/apple",
+        "pages/banana/banana"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "lazyCodeLoading": "requiredComponents",
+  "tabBar": {
+    "selectedColor": "#1296db",
+    "borderStyle": "black",
+    "list": [{
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "./static/img/renwuxiangqing-after.png",
+        "selectedIconPath": "./static/img/renwuxiangqing.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "我的",
+        "iconPath": "./static/img/shouye-after.png",
+        "selectedIconPath": "./static/img/shouye.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true,
+  "sitemapLocation": "sitemap.json"
+}
