@@ -82,8 +82,8 @@
 
 /* 眼睛 图标*/
 .v1 .v2 .passwordCs .eye {
-  margin-top: 5rpx;
-  margin-left: 65rpx;
+  /* margin-top: 5rpx;
+  margin-left: 65rpx; */
   width: 55rpx;
   height: 55rpx;
 }
