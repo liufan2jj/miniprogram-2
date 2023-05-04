@@ -1,0 +1,8 @@
+/* pages/play/play.wxss */
+.img {
+  width: 100%;
+}
+
+#myVideo {
+  width: 100%;
+}

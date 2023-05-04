@@ -1,8 +1,11 @@
 {
   "pages": [
     "pages/login/login",
+    "pages/countDown/countDown",
     "pages/home/home",
-    "pages/index/index"
+    "pages/index/index",
+    "pages/details/details",
+    "pages/play/play"
   ],
   "subpackages": [{
       "root": "packageA",
@@ -25,8 +28,9 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "Weixin",
     "navigationBarTextStyle": "black",
-    "enablePullDownRefresh": true
+    "enablePullDownRefresh": false
   },
+  "usingComponents": {},
   "lazyCodeLoading": "requiredComponents",
   "tabBar": {
     "selectedColor": "#1296db",

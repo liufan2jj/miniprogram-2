@@ -1,7 +1,6 @@
 {
   "usingComponents": {
-    "van-count-down": "@vant/weapp/count-down/index",
-    "van-circle": "@vant/weapp/circle/index"
+    "van-toast": "@vant/weapp/toast/index"
   },
   "navigationBarTitleText": "我的"
 }

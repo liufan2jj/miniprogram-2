@@ -1,0 +1,23 @@
+<!--pages/details/details.wxml-->
+<van-skeleton title avatar row="8" loading="{{ loading }}">
+  <scroll-view scroll-y="true" class="scoll-h">
+    <block wx:for="{{list}}" wx:key="index">
+      <view class="item-ans">
+        <view class="avatar">
+          <image class="img" src="{{item.oss_path}}" data-src="{{item.oss_path}}" bindtap="showPopup"></image>
+        </view>
+        <view class="expertInfo">
+          <view class="name">{{item.material_name}}</view>
+          <view wx:if="{{item.material_type==2}}" class="tag">类型：video</view>
+          <view wx:else class="tag">类型：jpg</view>
+          <view class="answerHistory">宽*高：{{item.width}}*{{item.height}} </view>
+          <view class="tag">创建时间：{{item.created_time}}</view>
+        </view>
+        <navigator url="/pages/play/play?id={{item.id}}&type={{item.material_type}}" class="askBtn">预览</navigator>
+      </view>
+    </block>
+    <van-popup show="{{ show }}" bindtap="onClose">
+      <image src="{{src}}"></image>
+    </van-popup>
+  </scroll-view>
+</van-skeleton>

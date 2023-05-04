@@ -47,7 +47,7 @@ newHttp.interceptor.request = config => {
 }
 // 响应拦截器
 newHttp.interceptor.response = response => {
-  // console.log(response)
+  console.log(response)
   // 关闭 Loading
   if (response.loading) {
     requestNum--
@@ -78,19 +78,23 @@ newHttp.interceptor.response = response => {
         RedirectTimer = null
         RedirectTimer = setTimeout(() => {
           wx.showToast({
-            title: `请先登录`,
+            title: '请先登录',
             icon: 'none',
             duration: 1500
           })
           let timerS = setTimeout(() => {
             clearTimeout(timerS)
             // 这里做退出登录的操作
-            // ......
+            wx.removeStorageSync('token')
+            wx.clearStorage()
+            wx.redirectTo({
+              url: '/pages/login/login'
+            })
           }, 1500)
         }, 2000)
         return false
         break;
-      case 500: // 
+      case 500:
         wx.showToast({
           title: msg,
           icon: 'none'
@@ -113,7 +117,7 @@ newHttp.interceptor.response = response => {
     return false
   } else {
     wx.showToast({
-      title: '网络错误',
+      title: "网络错误",
       icon: 'none'
     })
     return false

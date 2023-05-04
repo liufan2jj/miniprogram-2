@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "van-toast": "@vant/weapp/toast/index"
+  },
+  "navigationBarTitleText": "稳健医疗"
 }
