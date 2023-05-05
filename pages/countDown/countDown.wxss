@@ -122,7 +122,9 @@ body {
   height: 150px;
   background: #FFEFAD;
   /*     padding-bottom: 100px; */
+  mask: url('https://imgservices-1252317822.image.myqcloud.com/image/081320210201435/e9951400.png') right top no-repeat;
   -webkit-mask: url('https://imgservices-1252317822.image.myqcloud.com/image/081320210201435/e9951400.png') right top no-repeat;
+  mask-size: auto 150px;
   -webkit-mask-size: auto 150px;
   animation: fireworks 2s steps(24) infinite, random 8s steps(1) infinite, random_color 1s infinite;
 }
