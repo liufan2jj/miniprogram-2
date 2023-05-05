@@ -14,7 +14,8 @@
     <!-- 密码 -->
     <view class="passwordCs">
       <image src="/static/img/mima.png" class="ps"></image>
-      <input value="{{password}}" placeholder="请输入密码" type="{{flag==true?'password':'text'}}" bindinput="password" />
+      <input wx:if="{{flag==true}}" value="{{password}}" placeholder="请输入密码" type="password" bindinput="password" />
+      <input wx:else="" value="{{password}}" placeholder="请输入密码" type="text" bindinput="password" />
       <image src="/static/img/yanjing.png" class="eye" bindtap="setEye"></image>
     </view>
     <!-- 登录按钮 -->
