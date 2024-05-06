@@ -34,7 +34,7 @@ Page({
   },
   // 滚动切换标签样式
   switchTab: function (e) {
-    // console.log(e, '滑动')
+    console.log(e, '滑动')
     this.setData({
       currentTab: e.detail.current,
     });
