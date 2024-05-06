@@ -25,7 +25,7 @@ Page({
     })
   },
   onShow: function () {
-    this.getLeftTime('2024/2/9 00:00:00')
+    this.getLeftTime('2025/1/29 00:00:00')
     const arry = this.data.str.split('')
     console.log(arry)
     this.setData({
