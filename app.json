@@ -1,13 +1,16 @@
 {
   "pages": [
     "pages/login/login",
-    "pages/countDown/countDown",
+    "pages/bingeWatching/bingeWatching",
     "pages/home/home",
+    "pages/welfare/welfare",
+    "pages/countDown/countDown",
     "pages/index/index",
     "pages/details/details",
     "pages/play/play"
   ],
-  "subpackages": [{
+  "subpackages": [
+    {
       "root": "packageA",
       "pages": [
         "pages/cat/cat",
@@ -35,17 +38,30 @@
   "tabBar": {
     "selectedColor": "#1296db",
     "borderStyle": "black",
-    "list": [{
+    "list": [
+      {
+        "pagePath": "pages/bingeWatching/bingeWatching",
+        "text": "追剧",
+        "iconPath": "./static/img/zhuiju.png",
+        "selectedIconPath": "./static/img/zhuiju_after.png"
+      },
+      {
         "pagePath": "pages/home/home",
         "text": "首页",
-        "iconPath": "./static/img/renwuxiangqing-after.png",
-        "selectedIconPath": "./static/img/renwuxiangqing.png"
+        "iconPath": "./static/img/renwuxiangqing.png",
+        "selectedIconPath": "./static/img/renwuxiangqing_after.png"
+      },
+      {
+        "pagePath": "pages/welfare/welfare",
+        "text": "福利",
+        "iconPath": "./static/img/fuli.png",
+        "selectedIconPath": "./static/img/fuli_after.png"
       },
       {
         "pagePath": "pages/index/index",
         "text": "我的",
-        "iconPath": "./static/img/shouye-after.png",
-        "selectedIconPath": "./static/img/shouye.png"
+        "iconPath": "./static/img/shouye.png",
+        "selectedIconPath": "./static/img/shouye_after.png"
       }
     ]
   },
