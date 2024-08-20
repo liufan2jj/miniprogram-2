@@ -1,0 +1,86 @@
+/* 最外层容器样式 */
+#warp {
+  padding: 0 20px;
+}
+
+/* 搜索栏样式 */
+.van-search {
+  padding: 0 !important;
+}
+
+.van-search__content {
+  border: 1px solid #82dec0;
+  border-radius: 17px !important;
+  background: #fff !important;
+}
+
+/* 轮播图--容器宽度样式 */
+swiper {
+  height: 140px;
+  padding: 20px 0;
+}
+
+/* 轮播图--图片样式 */
+swiper image {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+/* 排行福利Vip--容器宽度样式 */
+.icon-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* 排行福利Vip--图标文字样式 */
+.iconWarp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 精选好剧--标题样式 */
+.jing-xuan-container {
+  padding: 20px 0;
+}
+
+/* 精选好剧--外部容器样式 */
+.jing-xuan-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.jing-xuan-list:after{
+  content: "";
+  flex: auto;
+}
+
+/* 精选好剧--单个卡片样式 */
+.jing-xuan-item {
+  width: 30%;
+  margin: 8px 0;
+}
+
+/* 精选好剧--单个卡片-图片样式 */
+.jing-xuan-item image{
+  width: 100%;
+  height: 150px;
+  border-radius: 6px;
+}
+
+/* 精选好剧--单个卡片-剧名样式 */
+.jing-xuan-desc .desc{
+  font-size: 14px;
+  color: #000;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* 精选好剧--单个卡片-播放数量样式 */
+.jing-xuan-desc .num{
+  font-size: 10px;
+  color: rgb(153, 150, 150);
+}

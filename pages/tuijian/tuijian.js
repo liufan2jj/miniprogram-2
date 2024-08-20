@@ -74,10 +74,8 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    //首页数据请求
-    that.getAlbumList()
     // 高度自适应
-    wx.getSystemInfo({
+    wx.getSystemInfo()({
       success: function (res) {
         var clientHeight = res.windowHeight,
           clientWidth = res.windowWidth,
@@ -203,7 +201,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    //首页数据请求
+    // this.getAlbumList()
   },
 
   /**

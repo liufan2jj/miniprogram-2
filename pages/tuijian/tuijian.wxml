@@ -1,4 +1,3 @@
-<!--pages/home.wxml-->
 <van-skeleton title avatar animate row="8" loading="{{ loading }}">
   <view>
     <scroll-view scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">

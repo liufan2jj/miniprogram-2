@@ -7,12 +7,10 @@ import {
 } from './utils/request'
 
 App({
-
   $Http: {
     get: requestGet,
     post: requestPost,
     put: requestPut,
     delete: requestDelete
   }
-
 })

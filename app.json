@@ -2,12 +2,13 @@
   "pages": [
     "pages/login/login",
     "pages/bingeWatching/bingeWatching",
-    "pages/home/home",
-    "pages/welfare/welfare",
+    "pages/tuijian/tuijian",
+    "pages/juchang/juchang",
+    "pages/wode/wode",
     "pages/countDown/countDown",
-    "pages/index/index",
     "pages/details/details",
-    "pages/play/play"
+    "pages/play/play",
+    "components/charge-dialog/charge-dialog"
   ],
   "subpackages": [
     {
@@ -33,7 +34,20 @@
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": false
   },
-  "usingComponents": {},
+  "usingComponents": {
+    "charge-dialog": "/components/charge-dialog/charge-dialog"
+  },
+  "plugins": {
+    "playlet-plugin": {
+      "version": "latest",
+      "provider": "wx94a6522b1d640c3b",
+      "genericsImplementation": {
+        "playlet": {
+          "charge-dialog": "/components/charge-dialog/charge-dialog"
+        }
+      }
+    }
+  },
   "lazyCodeLoading": "requiredComponents",
   "tabBar": {
     "selectedColor": "#1296db",
@@ -46,22 +60,22 @@
         "selectedIconPath": "./static/img/zhuiju_after.png"
       },
       {
-        "pagePath": "pages/home/home",
-        "text": "首页",
-        "iconPath": "./static/img/renwuxiangqing.png",
-        "selectedIconPath": "./static/img/renwuxiangqing_after.png"
+        "pagePath": "pages/tuijian/tuijian",
+        "text": "推荐",
+        "iconPath": "./static/img/tuijian.png",
+        "selectedIconPath": "./static/img/tuijian_after.png"
       },
       {
-        "pagePath": "pages/welfare/welfare",
-        "text": "福利",
-        "iconPath": "./static/img/fuli.png",
-        "selectedIconPath": "./static/img/fuli_after.png"
+        "pagePath": "pages/juchang/juchang",
+        "text": "剧场",
+        "iconPath": "./static/img/juchang.png",
+        "selectedIconPath": "./static/img/juchang_after.png"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/wode/wode",
         "text": "我的",
-        "iconPath": "./static/img/shouye.png",
-        "selectedIconPath": "./static/img/shouye_after.png"
+        "iconPath": "./static/img/wode.png",
+        "selectedIconPath": "./static/img/wode_after.png"
       }
     ]
   },

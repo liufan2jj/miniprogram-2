@@ -1,0 +1,30 @@
+<!--index.wxml-->
+<van-toast id="van-toast" />
+<!-- 用户信息：头像，呢称 /登录 -->
+<view class="xx">
+  <view>
+    <image src="{{avatarUrl}}" class="tx"></image>
+  </view>
+  <view class="mz">{{name}}</view>
+  <view wx:if="{{m==0}}" bindtap="getUserProfile" class="underline">用户授权</view>
+  <view wx:else bindtap="getUserProfile" class="underline">刷新</view>
+</view>
+
+<!-- 分割线 -->
+<view class="hr"></view>
+
+<!-- 循环数组 mySet  -->
+<view wx:for="{{mySet}}" wx:key="index" bindtap="onMySet" data-type="{{item.name}}">
+
+  <!-- 图标和循环myset中的文字  -->
+  <view class="vv_1">
+    <view class="vv_warp">
+      <image class="image1" src="{{item.img}}" />
+      <view>{{item.name}}</view>
+    </view>
+    <view class="icon">＞</view>
+  </view>
+</view>
+
+<!-- 分割线 -->
+<view class="hr2"></view>

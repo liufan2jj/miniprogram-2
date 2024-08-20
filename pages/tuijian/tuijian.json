@@ -2,5 +2,5 @@
   "usingComponents": {
     "van-skeleton": "@vant/weapp/skeleton/index"
   },
-  "navigationBarTitleText": "首页"
+  "navigationBarTitleText": "推荐"
 }

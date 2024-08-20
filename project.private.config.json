@@ -6,15 +6,15 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/home/home",
-          "pathName": "pages/home/home",
+          "name": "pages/juchang/juchang",
+          "pathName": "pages/juchang/juchang",
           "query": "",
           "launchMode": "default",
           "scene": null,
           "partialCompile": {
             "enabled": false,
             "pages": [
-              "pages/home/home"
+              "pages/juchang/juchang"
             ]
           }
         }

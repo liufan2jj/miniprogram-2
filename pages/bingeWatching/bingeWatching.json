@@ -1,4 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "recent-list": "plugin://playlet-plugin/recent-list",
+    "fav-list": "plugin://playlet-plugin/fav-list"
+  },
   "navigationBarTitleText": "追剧"
 }

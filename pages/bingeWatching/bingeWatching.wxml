@@ -1,2 +1,16 @@
-<!--pages/bingeWatching/bingeWatching.wxml-->
-<text>pages/bingeWatching/bingeWatching.wxml</text>
+<!-- 我看过的 -->
+<recent-list
+    showHeader="{{true}}"
+    bind:tapempty="onTapEmpty"
+    bind:click="onClick"
+    url="/pages/juchang/juchang"
+></recent-list>
+
+<!-- 在追的剧 -->
+<fav-list
+    showHeader="{{true}}"
+    bind:tapempty="onTapEmpty"
+    bind:click="onClick"
+    bind:unfav="onUnFav"
+    url="/pages/juchang/juchang"
+></fav-list>
