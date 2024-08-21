@@ -16,7 +16,15 @@ App({
   },
   playerManagerList: [],
   onLaunch(options) {
-    console.log('小程序启动')
+    wx.login({
+      success (res) {
+        if (res.code) {
+          console.log(res.code)
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    })
     playletPlugin.onPageLoad(this._onPlayerLoad.bind(this))
   },
   _onPlayerLoad(info) {
