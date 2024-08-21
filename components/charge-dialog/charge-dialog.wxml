@@ -1,2 +1,9 @@
-<!--components/charge-dialog/charge-dialog.wxml-->
-<text>components/charge-dialog/charge-dialog.wxml</text>
+<view class="charge-dialog">
+  <view class="charge-list" wx:for="{{chargeList}}">
+    <view bind:tap="onSelectChargeItem" data-index="{{index}}" class="charge-item {{selectIndex == index ? 'active' : ''}}">{{item.name}}</view>
+  </view>
+  <button bind:tap="onCharge" type="primary">充值</button>
+  <button bind:tap="onClose" style="margin-top: 8px;" type="primary">关闭弹窗</button>
+  <view style="height:1000px"></view>
+  <view>test end</view>
+</view>

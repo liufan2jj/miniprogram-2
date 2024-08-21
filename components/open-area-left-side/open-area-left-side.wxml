@@ -1,0 +1,3 @@
+<view class="open-area-left-side">
+  <view bind:tap="onOperate" class="btn-operate">操作</view>
+</view>

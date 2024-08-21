@@ -35,7 +35,10 @@
     "enablePullDownRefresh": false
   },
   "usingComponents": {
-    "charge-dialog": "/components/charge-dialog/charge-dialog"
+    "charge-dialog": "/components/charge-dialog/charge-dialog",
+    "open-area-left": "/components/open-area-left/open-area-left",
+    "open-area-left-side": "/components/open-area-left-side/open-area-left-side",
+    "open-area-right": "/components/open-area-right/open-area-right"
   },
   "plugins": {
     "playlet-plugin": {

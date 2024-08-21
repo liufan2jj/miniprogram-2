@@ -1,1 +1,12 @@
-/* components/charge-dialog/charge-dialog.wxss */
+.charge-dialog {
+  padding: 16px;
+}
+.charge-item {
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1)
+}
+.charge-item:active {
+  background-color: rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,5 @@
+.btn-operate {
+    color: white;
+    line-height: 32px;
+    font-size: 15px;
+}
