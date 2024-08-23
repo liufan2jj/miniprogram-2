@@ -1,41 +1,57 @@
 <!-- 签到金币总金额 -->
 <view class="totalNum">金币余额: <text class="total_text">{{totalNum}}</text></view>
-<view class="container-warp">
-  <!-- 累积签单天数 -->
-  <view class='thead'>
-    <view class='mm'>已连续签到 <text>{{signNum}}</text> 天</view>
-    <view class='pp'>签到规则></view>
-  </view>
-  <!-- 签到天数 -->
-  <view class="head-dd">
-    <view wx:for="{{list}}" wx:key='index'>
-      <view class="head_info">
-        <view class="head_title">第{{item}}天</view>
+<view class="gap_warp">
+  <view class="container-warp">
+    <!-- 签到面板 -->
+    <view class="sing_warp">
+      <!-- 累积签单天数 -->
+      <view class='thead'>
+        <view class='mm'>已连续签到 <text>{{signNum}}</text> 天</view>
+        <view class='pp'>签到规则></view>
+      </view>
+      <!-- 签到天数 -->
+      <view class="head-dd">
+        <view wx:for="{{list}}" wx:key='index'>
+          <view class="head_info">
+            <view class="head_title">第{{item}}天</view>
+          </view>
+        </view>
+      </view>
+      <view class="head-iconWarp">
+        <view class="icon_warp" wx:for="{{list}}" wx:key='index'>
+          <image class="head_icon" src="{{item>signNum?'../../static/img/a-5fenzhong.png':'../../static/img/duigouxiao.png'}}"></image>
+          <view wx:if="{{index!=0}}" class='head_line' style="width:{{300/(list.length-1)}}rpx;background:{{item<=signNum?'#eeeaaa':''}};">
+          </view>
+        </view>
+      </view>
+      <!-- 签到按钮 -->
+      <view class='the-btn'>
+        <button type='button' class='btn' bindtap='bindSignIn' data-num="{{signNum}}" disabled='{{signState}}' data-min="{{min}}" data-max="{{max}}" data-be="{{be}}">签到</button>
+      </view>
+      <view class="tips">
+        <text>连续签到福利丰厚！未连续签到要重新开始哦~</text>
       </view>
     </view>
-  </view>
-  <view class="head-iconWarp">
-    <view class="icon_warp" wx:for="{{list}}" wx:key='index'>
-      <image class="head_icon" src="{{item>signNum?'../../static/img/a-5fenzhong.png':'../../static/img/duigouxiao.png'}}"></image>
-      <view wx:if="{{index!=0}}" class='head_line' style="width:{{300/(list.length-1)}}rpx;background:{{item<=signNum?'#eeeaaa':''}};">
+    <view style="height: 20px;"></view>
+    <!-- 活动面板 -->
+    <view class="task_warp">
+      <view class="task_head"><text class="task_title">做任务领金币</text></view>
+      <view class="todoList_warp">
+        <view wx:for="{{todoList}}" wx:key="index" class="todo_item">
+          <view class="todo_item_warp">
+            <van-icon name="{{item.state==true?'passed' :'todo-list-o'}}" color="{{item.state==true?'#e80909':'#4e4c4c'}}" size="20px" />
+            <text class="todes_title">{{item.contentText}}</text>
+          </view>
+          <van-button round size="mini" type="info" disabled="{{item.state}}">{{item.state==true?'已完成' :'去完成'}}</van-button>
+        </view>
       </view>
     </view>
+    <view style="height: 20px;"></view>
+    <!-- 底部图片 -->
+    <view class="bottom_warp">
+      <view class="bottom_left">特惠充值</view>
+      <view class="bottom_right">开通Vip</view>
+    </view>
+    <view style="height: 20px;"></view>
   </view>
-
 </view>
-<!-- 签到按钮 -->
-<view class='the-btn'>
-  <button type='button' class='btn' bindtap='bindSignIn' data-num="{{signNum}}" disabled='{{signState}}' data-min="{{min}}" data-max="{{max}}" data-be="{{be}}">签到</button>
-</view>
-<!-- 活动面板 -->
-<van-collapse value="{{ activeNames }}">
-  <van-collapse-item title="做任务领金币" size="large" is-link="{{false}}" border="{{false}}" name="1">
-    <view wx:for="{{todoList}}" wx:key="index" class="todo_item">
-      <view class="todo_item_warp">
-        <van-icon name="{{item.state==true?'passed' :'todo-list-o'}}" color="{{item.state==true?'#e80909':'#4e4c4c'}}" size="20px" />
-        <text class="todes_title">{{item.contentText}}</text>
-      </view>
-      <van-button round size="mini" type="info" disabled="{{item.state}}">{{item.state==true?'已完成' :'去完成'}}</van-button>
-    </view>
-  </van-collapse-item>
-</van-collapse>

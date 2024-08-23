@@ -3,20 +3,28 @@ import request from '../../utils/loginInfo'
 Page({
   data: {
     avatarUrl: "",
-    name: "",
+    name: "测试",
     userInfo: {},
     mySet: [{
-        'name': "我的预约",
+        'name': "收藏小程序",
         'img': "../../static/img/yuyue-lishi.png"
       },
       {
-        'name': "我的收藏",
+        'name': "联系客服",
         'img': "../../static/img/shoucang.png"
       },
       {
-        'name': "个人设置",
+        'name': "充值记录",
         'img': "../../static/img/icon-shezhi.png"
       },
+      {
+        'name': "消费明细",
+        'img': "../../static/img/icon-shezhi.png"
+      },
+      {
+        'name': "服务协议",
+        'img': "../../static/img/icon-shezhi.png"
+      }
     ]
   },
   //跳转修改昵称头像页面
@@ -47,11 +55,11 @@ Page({
     }
   },
   // 绑定手机号
-  getPhoneNumber (e) {
+  getPhoneNumber(e) {
     request.getPhone(e.detail.code)
-    console.log(e.detail.code)  // 动态令牌
+    console.log(e.detail.code) // 动态令牌
     console.log(e.detail.errMsg) // 回调信息（成功失败都会返回）
-    console.log(e.detail.errno)  // 错误码（失败时返回）
+    console.log(e.detail.errno) // 错误码（失败时返回）
   },
   //退出登录
   loginOut() {

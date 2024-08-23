@@ -1,38 +1,57 @@
-/* 用户信息：头像，呢称 /登录 */
 .xx {
   display: flex;
-  flex-direction: row;
-  background-color: #32667e;
-  line-height: 354rpx;
+  justify-content: space-between;
+  padding: 8px;
+  height: 80px;
 }
 
-.tx {
-  width: 100rpx;
-  height: 100rpx;
+.xx_warp {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.xx_tx {
+  width: 68px;
+  height: 68px;
   border-radius: 50%;
-  margin-left: 50rpx;
   border: 1px solid #a09b9b;
 }
 
-.mz {
-  font-size: 30rpx;
-  line-height: 200rpx;
-  margin-left: 20rpx;
-  color: #FFFFFF;
+.xx_userWarp {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 8px;
 }
 
-.underline {
-  text-decoration: underline;
-  font-size: 30rpx;
-  color: white;
-  text-align: center;
-  line-height: 200rpx;
+.xx_mz {
+  font-size: 18px;
+  font-family: fantasy;
 }
 
-/* 分割线 */
-.hr {
-  height: 4rpx;
-  background-color: rgb(202, 202, 202);
+.xx_num {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.xx_title {
+  font-size: 14px;
+}
+
+.btns {
+  display: flex;
+  align-items: center;
+}
+
+.banner_warp {
+  padding: 0 10px;
+}
+
+.banner {
+  height: 100px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
 }
 
 .vv {
@@ -42,32 +61,39 @@
 
 /* 图标和循环myset中的文字 */
 .vv_1 {
-  line-height: 100rpx;
+  line-height: 110rpx;
   background-color: #ffffff;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 10px;
 }
 
 .vv_warp {
   display: flex;
+  align-items: center;
 }
 
 .image1 {
-  padding-top: 26rpx;
-  padding-right: 20rpx;
-  padding-left: 30rpx;
-  width: 50rpx;
-  height: 50rpx;
+  width: 24px;
+  height: 24px;
+}
+
+.iconsTitle {
+  margin-left: 4px;
+  font-size: 16px;
+  font-family: fantasy;
 }
 
 .icon {
-  /* margin-left: 470rpx; */
-  color: rgba(202, 202, 202);
+  color: rgb(58 55 55);
 }
 
-/* 分割线 */
-.hr2 {
-  height: 2rpx;
-  background-color: rgba(202, 202, 202, 0.856);
+.bottom_warp {
+  padding: 10px;
+}
+
+.bottom {
+  height: 100px;
+  border: 1px solid #ccc;
 }

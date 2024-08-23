@@ -10,3 +10,4 @@
 <view class="btnsWarp">
   <view class="btns" bindtap="submitUserInfo">确认</view>
 </view>
+<view style="height: 20px;"></view>

@@ -1,8 +1,3 @@
-page {
-  padding: 0;
-  margin: 0;
-}
-
 .totalNum {
   padding: 8px;
 }
@@ -11,17 +6,35 @@ page {
   color: rgb(236, 135, 67);
 }
 
+.gap_warp {
+  height: 50px;
+  background: #ccc;
+  position: relative;
+}
+
 .container-warp {
-  border: 1px solid #ccc;
-  border-radius: 8px 8px 0 0;
-  line-height: 32px;
-  padding: 8px;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  width: 96%;
+  z-index: 1000;
+  transform: translate(-50%, 10px);
+}
+
+.sing_warp {
+  background: #fff;
+  border-radius: 8px 8px 12px 12px;
+  border: 1px solid #efefef;
+  border-top: none;
 }
 
 /* 累积签单天数 */
 .thead {
   display: flex;
   justify-content: space-between;
+  background: #efebeb;
+  line-height: 40px;
+  border-radius: 8px 8px 0 0;
 }
 
 .mm {
@@ -81,7 +94,7 @@ page {
 
 /* 签到按钮样式 */
 .the-btn {
-  padding: 20px;
+  padding: 4px;
 }
 
 .btn {
@@ -91,24 +104,71 @@ page {
   border-radius: 16px;
   text-align: center;
   color: #fff;
-  width: 94px;
+  width: 78%;
+}
+
+/* tips */
+.tips {
+  font-size: 12px;
+  font-family: fantasy;
+  padding: 10px 10px;
 }
 
 /* 活动面板样式 */
+.task_warp {
+  background: #fff;
+  border-radius: 8px 8px 12px 12px;
+  border: 1px solid #efefef;
+  border-top: none;
+}
+
+.task_head {
+  background: #efebeb;
+  line-height: 40px;
+  border-radius: 8px 8px 0 0;
+}
+
+.task_title {
+  font-size: 16px;
+  font-family: fantasy;
+}
+.todoList_warp{
+  padding: 8px 10px;
+}
 .todo_item {
   display: flex;
   justify-content: space-between;
   line-height: 32px;
 }
 
-.todo_item_warp{
+.todo_item_warp {
   display: flex;
   align-items: center;
 }
 
-.todes_title{
+.todes_title {
   margin-left: 4px;
   font-size: 16px;
+}
+
+.bottom_warp {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.bottom_left {
+  width: 120px;
+  height: 54px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.bottom_right {
+  width: 120px;
+  height: 54px;
+  border: 1px solid #ccc;
+  text-align: center;
 }
 
 /* progress {

@@ -24,3 +24,4 @@
     </swiper>
   </view>
 </van-skeleton>
+<view style="height: 20px;"></view>

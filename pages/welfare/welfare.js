@@ -28,6 +28,22 @@ Page({
         contentText: '完成一笔3000万的订单',
         state: false
       },
+      {
+        contentText: '完成一笔3000万的订单',
+        state: false
+      },
+      {
+        contentText: '完成一笔3000万的订单',
+        state: false
+      },
+      {
+        contentText: '完成一笔3000万的订单',
+        state: false
+      },
+      {
+        contentText: '完成一笔3000万的订单',
+        state: false
+      },
     ]
   },
   // 初始化数据方法
