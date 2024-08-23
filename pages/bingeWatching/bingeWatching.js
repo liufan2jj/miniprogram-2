@@ -1,5 +1,5 @@
 // 引用的utils/playerManager.js的代码
-const PlayerManager = require('../../utils/playerManager')
+const PlayerManager = require('../../utils/playerManager').default
 Page({
 
   /**

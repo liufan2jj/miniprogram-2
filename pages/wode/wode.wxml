@@ -1,13 +1,10 @@
-<!--index.wxml-->
 <van-toast id="van-toast" />
 <!-- 用户信息：头像，呢称 /登录 -->
 <view class="xx">
   <view>
-    <image src="{{avatarUrl}}" class="tx"></image>
+    <image src="{{avatarUrl}}" bindtap="goUserInfo" class="tx"></image>
   </view>
   <view class="mz">{{name}}</view>
-  <view wx:if="{{m==0}}" bindtap="getUserProfile" class="underline">用户授权</view>
-  <view wx:else bindtap="getUserProfile" class="underline">刷新</view>
 </view>
 
 <!-- 分割线 -->
@@ -28,3 +25,4 @@
 
 <!-- 分割线 -->
 <view class="hr2"></view>
+<button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">同步手机号</button>

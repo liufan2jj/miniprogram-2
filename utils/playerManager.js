@@ -158,4 +158,4 @@ function PlayerManager() {
 }
 
 PlayerManager.navigateToPlayer = navigateToPlayer
-module.exports = PlayerManager
+export default PlayerManager

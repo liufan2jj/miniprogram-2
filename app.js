@@ -1,31 +1,21 @@
 // app.js
-import {
-  requestGet,
-  requestPost,
-  requestPut,
-  requestDelete
-} from './utils/request'
-var PlayerManager = require('./utils/playerManager')
+import request from './utils/loginInfo'
+import PlayerManager from './utils/playerManager'
 const playletPlugin = requirePlugin('playlet-plugin')
 App({
-  $Http: {
-    get: requestGet,
-    post: requestPost,
-    put: requestPut,
-    delete: requestDelete
-  },
   playerManagerList: [],
   onLaunch(options) {
+    playletPlugin.onPageLoad(this._onPlayerLoad.bind(this))
     wx.login({
-      success (res) {
+      async success(res) {
         if (res.code) {
-          console.log(res.code)
+          var code = res.code
+          await request.loginUser(code)
         } else {
           console.log('登录失败！' + res.errMsg)
         }
       }
     })
-    playletPlugin.onPageLoad(this._onPlayerLoad.bind(this))
   },
   _onPlayerLoad(info) {
     // 处理直接进入播放器页面的情况

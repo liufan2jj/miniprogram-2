@@ -3,19 +3,19 @@
   display: flex;
   flex-direction: row;
   background-color: #32667e;
-  line-height: 400rpx;
+  line-height: 354rpx;
 }
 
 .tx {
-  width: 150rpx;
-  height: 150rpx;
+  width: 100rpx;
+  height: 100rpx;
   border-radius: 50%;
   margin-left: 50rpx;
   border: 1px solid #a09b9b;
 }
 
 .mz {
-  font-size: 50rpx;
+  font-size: 30rpx;
   line-height: 200rpx;
   margin-left: 20rpx;
   color: #FFFFFF;
@@ -40,7 +40,7 @@
   height: 950rpx;
 }
 
- /* 图标和循环myset中的文字 */
+/* 图标和循环myset中的文字 */
 .vv_1 {
   line-height: 100rpx;
   background-color: #ffffff;

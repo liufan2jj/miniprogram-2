@@ -7,8 +7,9 @@
     "pages/wode/wode",
     "pages/countDown/countDown",
     "pages/details/details",
-    "pages/play/play",
-    "components/charge-dialog/charge-dialog"
+    "pages/welfare/welfare",
+    "components/charge-dialog/charge-dialog",
+    "pages/updateUserinfo/updateUserinfo"
   ],
   "subpackages": [
     {

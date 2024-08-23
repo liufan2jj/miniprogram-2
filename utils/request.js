@@ -3,7 +3,7 @@ const ACCESS_TOKEN = 'token' // token凭证的key
 import HTTP from './http'
 // 创建配置信息
 const requestConfig = {
-  baseUrl: 'http://api.dingding10.top/index.php', // https://test.request.api
+  baseUrl: 'http://192.168.8.109:19112/apigateway', // https://test.request.api
   timeout: 10 * 1000, // 请求超时时间
 }
 // 初始化请求实例
@@ -39,7 +39,7 @@ newHttp.interceptor.request = config => {
   var value = wx.getStorageSync('token')
   if (value) {
     // Do something with return value
-    config.header[ACCESS_TOKEN] = value
+    config.header['Authorization'] = 'Bearer ' + value
   }
   // 这里可以自定义统一处理一下 请求的参数 
   // config.data = buildOptions( config.data )
@@ -47,7 +47,16 @@ newHttp.interceptor.request = config => {
 }
 // 响应拦截器
 newHttp.interceptor.response = response => {
-  console.log(response)
+  if (response.header['x-token'] && response.header['x-token-expire']) {
+    // 设置token缓存
+    wx.setStorageSync('token', response.header['x-token']);
+    // 当前时间
+    var timestamp = Date.parse(new Date());
+    // 加上过期期限
+    var expiration = timestamp + response.header['x-token-expire'];
+    // 存入缓存
+    wx.setStorageSync('data_expiration', expiration);
+  }
   // 关闭 Loading
   if (response.loading) {
     requestNum--
@@ -108,9 +117,24 @@ newHttp.interceptor.response = response => {
         })
         return false
     }
-  } else if (response.statusCode === 500) {
+  } else if (response.statusCode === 401) {
+    const {
+      code,
+      msg
+    } = response.data
     wx.showToast({
-      title: '服务器500错误',
+      title: msg,
+      icon: 'none',
+      duration: 2000
+    })
+    return false
+  } else if (response.statusCode === 500) {
+    const {
+      code,
+      msg
+    } = response.data
+    wx.showToast({
+      title: msg,
       icon: 'none',
       duration: 2000
     })
@@ -123,7 +147,6 @@ newHttp.interceptor.response = response => {
     return false
   }
 }
-
 
 //GET请求
 export function requestGet({

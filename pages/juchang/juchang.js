@@ -1,5 +1,6 @@
+import Toast from '@vant/weapp/toast/toast';
 // 引用的utils/playerManager.js的代码
-const PlayerManager = require('../../utils/playerManager')
+const PlayerManager = require('../../utils/playerManager').default
 
 Page({
 
@@ -52,13 +53,37 @@ Page({
     vertical: false,
     autoplay: true,
     interval: 2000,
-    duration: 500
+    duration: 500,
+    value:'',
   },
   // 搜索栏跳转搜索页
   goSearchPage() {
     console.log("跳转搜索")
   },
-
+  // 排行 福利 Vip 跳转事件
+  goClassification: function (e) {
+    switch (e.currentTarget.dataset.type) {
+      case "排行":
+        Toast('排行');
+        // wx.navigateTo({
+        //   url: '/pages/countDown/countDown',
+        // })
+        break;
+      case "福利":
+        wx.navigateTo({
+          url: '/pages/welfare/welfare',
+        })
+        break;
+      case "Vip":
+        Toast('Vip');
+        // wx.navigateTo({
+        //   url: '/pages/countDown/countDown',
+        // })
+        break;
+      default:
+        break;
+    }
+  },
   // 点击跳转播放器
   goPlayVideo() {
     PlayerManager.navigateToPlayer({

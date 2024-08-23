@@ -1,3 +1,4 @@
+<van-toast id="van-toast" />
 <view id="warp">
   <!-- 搜索栏 -->
   <van-search value="{{ value }}" bind:focus="goSearchPage" placeholder="请输入搜索关键词" />
@@ -9,7 +10,7 @@
   </swiper>
   <!-- 排行，福利，Vip -->
   <view class="icon-container">
-    <view wx:for="{{iconList}}" wx:key="index" class="iconWarp">
+    <view wx:for="{{iconList}}" wx:key="index" class="iconWarp" bindtap="goClassification" data-type="{{item.text}}">
       <van-icon name="{{item.name}}" color="{{item.color}}" size="{{item.size}}" />
       <text>{{item.text}}</text>
     </view>

@@ -1,0 +1,12 @@
+<view class="image-warp">
+  <view class="image-title">头像</view>
+  <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+    <image mode="scaleToFill" src="{{avatarUrl}}" bindtap="getUserProfile"></image>
+  </button>
+</view>
+<view>
+  <van-field input-align="right" model:value="{{name}}" label="用户名" placeholder="请输入用户名" />
+</view>
+<view class="btnsWarp">
+  <view class="btns" bindtap="submitUserInfo">确认</view>
+</view>

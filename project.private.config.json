@@ -1,6 +1,7 @@
 {
   "setting": {
-    "urlCheck": false
+    "urlCheck": false,
+    "compileHotReLoad": false
   },
   "condition": {
     "miniprogram": {
