@@ -1,3 +1,4 @@
+<van-dialog id="van-dialog" />
 <!-- 签到金币总金额 -->
 <view class="totalNum">金币余额: <text class="total_text">{{totalNum}}</text></view>
 <view class="gap_warp">
@@ -7,7 +8,7 @@
       <!-- 累积签单天数 -->
       <view class='thead'>
         <view class='mm'>已连续签到 <text>{{signNum}}</text> 天</view>
-        <view class='pp'>签到规则></view>
+        <view class='pp' bind:tap="bindSignRules">签到规则></view>
       </view>
       <!-- 签到天数 -->
       <view class="head-dd">
@@ -49,9 +50,37 @@
     <view style="height: 20px;"></view>
     <!-- 底部图片 -->
     <view class="bottom_warp">
-      <view class="bottom_left">特惠充值</view>
-      <view class="bottom_right">开通Vip</view>
+      <view class="bottom_left" bind:tap="gochargePage">特惠充值</view>
+      <view class="bottom_right" bind:tap="gomemberPage">开通Vip</view>
     </view>
+    <!-- 签到规则弹窗 -->
+    <van-dialog use-slot title="签到规则" show="{{ show }}" bind:close="onClose">
+      <view class="content_warp">
+        <view class="content_text">
+          1、每7天为一个签到周期,用户连续签满7天,完成一个签到周期,下次签到开始重新计算新的签到周期。
+        </view>
+        <view class="content_text">
+          2、用户每次签到均可获得相应的奖励,连续签到7天可获得更高奖励。
+        </view>
+        <view class="content_text">
+          3、若途中漏签,则从第一天开始重新计算新的签到周期
+        </view>
+      </view>
+    </van-dialog>
+    <!-- 签到成功提示弹窗 -->
+    <van-dialog use-slot title="签到成功" show="{{ signShow }}" bind:close="onsignClose">
+      <view class="signTips_warp">
+        <view>
+          已累积签到 {{signNum}} 天，恭喜获得
+        </view>
+        <view class="signTips_image_warp">
+          <image class="signTips_image" src="../../static/img/a-5fenzhong.png" />
+        </view>
+        <view>
+          5金币
+        </view>
+      </view>
+    </van-dialog>
     <view style="height: 20px;"></view>
   </view>
 </view>

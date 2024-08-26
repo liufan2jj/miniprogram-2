@@ -86,7 +86,7 @@
 }
 
 .icon {
-  color: rgb(58 55 55);
+  color: #ccc;
 }
 
 .bottom_warp {

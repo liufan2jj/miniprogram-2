@@ -1,15 +1,20 @@
 {
   "pages": [
-    "pages/login/login",
     "pages/bingeWatching/bingeWatching",
     "pages/tuijian/tuijian",
     "pages/juchang/juchang",
     "pages/wode/wode",
-    "pages/countDown/countDown",
     "pages/details/details",
     "pages/welfare/welfare",
     "components/charge-dialog/charge-dialog",
-    "pages/updateUserinfo/updateUserinfo"
+    "pages/updateUserinfo/updateUserinfo",
+    "pages/searchPage/searchPage",
+    "pages/rankingList/rankingList",
+    "pages/recharge/recharge",
+    "pages/member/member",
+    "pages/transactionDetails/transactionDetails",
+    "pages/rechargeRecord/rechargeRecord",
+    "pages/userAgreement/userAgreement"
   ],
   "subpackages": [
     {

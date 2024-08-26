@@ -1,7 +1,9 @@
 <van-toast id="van-toast" />
 <view id="warp">
   <!-- 搜索栏 -->
-  <van-search value="{{ value }}" bind:focus="goSearchPage" placeholder="请输入搜索关键词" />
+  <view capture-catch:touchstart="goSearchPage">
+    <van-search value="{{ value }}" placeholder="请输入搜索关键词" />
+  </view>
   <!-- 轮播图 -->
   <swiper interval="5000" indicator-dots="true" autoplay="true" circular="true">
     <swiper-item wx:for="{{imgList}}" wx:key="index">
@@ -33,5 +35,5 @@
       </view>
     </view>
   </view>
+  <view style="height: 20px;"></view>
 </view>
-<view style="height: 20px;"></view>

@@ -65,16 +65,25 @@ Page({
       if (code === 200) {
         wx.showToast({
           title: '更新成功',
+          icon:"success"
         })
         wx.setStorageSync('userInfo', data);
         this.setData({
           avatarUrl: data.avatar_url || '',
           name: data.nickname || '',
         })
+      } else {
+        wx.showToast({
+          title: msg,
+          icon: "error"
+        })
       }
 
     } catch (error) {
-
+      wx.showToast({
+        title: error,
+        icon: "error"
+      })
     } finally {
 
     }

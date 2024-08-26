@@ -30,7 +30,7 @@ swiper image {
 /* 排行福利Vip--容器宽度样式 */
 .icon-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 /* 排行福利Vip--图标文字样式 */

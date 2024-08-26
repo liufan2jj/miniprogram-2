@@ -17,9 +17,17 @@ async function loginUser(params) {
         data: data,
         key: 'userInfo',
       });
+    } else {
+      wx.showToast({
+        title: error,
+        icon: "error"
+      })
     }
   } catch (error) {
-
+    wx.showToast({
+      title: error,
+      icon: "error"
+    })
   } finally {
 
   }

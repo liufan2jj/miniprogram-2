@@ -2,30 +2,38 @@ import Toast from '@vant/weapp/toast/toast';
 import request from '../../utils/loginInfo'
 Page({
   data: {
+    show: false,
     avatarUrl: "",
-    name: "测试",
+    name: "",
+    id: "",
     userInfo: {},
     mySet: [{
         'name': "收藏小程序",
-        'img': "../../static/img/yuyue-lishi.png"
+        'img': "../../static/img/shoucang.png",
       },
       {
         'name': "联系客服",
-        'img': "../../static/img/shoucang.png"
+        'img': "../../static/img/kefu.png",
       },
       {
         'name': "充值记录",
-        'img': "../../static/img/icon-shezhi.png"
+        'img': "../../static/img/chongzhijilu.png",
       },
       {
         'name': "消费明细",
-        'img': "../../static/img/icon-shezhi.png"
+        'img': "../../static/img/xiaofeimingxi.png",
       },
       {
         'name': "服务协议",
-        'img': "../../static/img/icon-shezhi.png"
+        'img': "../../static/img/fuwuxieyi.png",
       }
     ]
+  },
+  // 充值按钮
+  goRecharge() {
+    this.setData({
+      show: true
+    });
   },
   //跳转修改昵称头像页面
   goUserInfo() {
@@ -38,21 +46,35 @@ Page({
    */
   onMySet: function (e) {
     switch (e.currentTarget.dataset.type) {
-      case "我的预约":
+      case "收藏小程序":
         Toast('我的预约');
-        wx.navigateTo({
-          url: '/pages/countDown/countDown',
-        })
         break;
       case "我的收藏":
-        Toast('我的收藏');
+        Toast('联系客服');
         break;
-      case "个人设置":
-        Toast('个人设置');
+      case "充值记录":
+        wx.navigateTo({
+          url: '/pages/transactionDetails/transactionDetails?tabs=1',
+        })
+        break;
+      case "消费明细":
+        wx.navigateTo({
+          url: '/pages/transactionDetails/transactionDetails?tabs=0',
+        })
+        break;
+      case "服务协议":
+        wx.navigateTo({
+          url: '/pages/userAgreement/userAgreement?tabs=1',
+        })
         break;
       default:
         break;
     }
+  },
+  getwelfarePage(){
+    wx.navigateTo({
+      url: '/pages/welfare/welfare',
+    })
   },
   // 绑定手机号
   getPhoneNumber(e) {
@@ -85,6 +107,7 @@ Page({
       this.setData({
         avatarUrl: this.data.userInfo.avatar_url || '',
         name: this.data.userInfo.nickname || '',
+        id: this.data.userInfo.id || '',
         userInfo: this.data.userInfo
       })
     }

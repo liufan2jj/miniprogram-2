@@ -5,14 +5,14 @@
     <image src="{{avatarUrl}}" bindtap="goUserInfo" class="xx_tx"></image>
     <view class="xx_userWarp">
       <text class="xx_mz">{{name}}</text>
-      <view><text class="xx_title">ID:</text><text class="xx_num">1000000001</text></view>
+      <view><text class="xx_title">ID:</text><text class="xx_num">{{id}}</text></view>
       <view>
         <text class="xx_title">我的金币：</text><text class="xx_num">200</text>
       </view>
     </view>
   </view>
   <view class="btns">
-    <van-button round size="mini" type="info">充值金币</van-button>
+    <van-button round size="mini" type="info" bind:tap="goRecharge">充值金币</van-button>
   </view>
 </view>
 <!-- banner插图 -->
@@ -24,6 +24,9 @@
 <view wx:for="{{mySet}}" wx:key="index" bindtap="onMySet" data-type="{{item.name}}">
 
   <!-- 图标和循环myset中的文字  -->
+  <!-- <van-cell is-link title="{{item.name}}" link-type="navigateTo" url="{{item.url}}">
+    <image slot="right-icon" class="custom-icon" src="{{item.img}}" />
+  </van-cell> -->
   <view class="vv_1">
     <view class="vv_warp">
       <image class="image1" src="{{item.img}}" />
@@ -35,7 +38,7 @@
 
 <!-- bottom图片 -->
 <view class="bottom_warp">
-  <view class="bottom"></view>
+  <view class="bottom" bind:tap="getwelfarePage"></view>
 </view>
 
 <view style="height: 20px;"></view>

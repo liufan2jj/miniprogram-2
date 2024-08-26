@@ -1,0 +1,44 @@
+#warp {
+  padding: 0 20px;
+}
+
+.search_title {
+  padding: 6px;
+}
+
+.search_list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.search_item {
+  width: 48%;
+  margin: 6px 0;
+  position: relative;
+}
+
+.search_tips {
+  position: absolute;
+  left: 8px;
+  top: -4px;
+  background-image: linear-gradient(212deg, #cccccc 50%, rgba(255, 255, 255, 0) 50%), linear-gradient(148deg, #cccccc 50%, rgba(255, 255, 255, 0) 50%);
+  width: 28px;
+  height: 61px;
+  text-align: center;
+}
+
+image {
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+}
+
+.search_desc {
+  font-size: 14px;
+  color: #000;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 6px;
+}

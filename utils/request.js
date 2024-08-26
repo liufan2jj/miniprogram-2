@@ -4,7 +4,7 @@ import HTTP from './http'
 // 创建配置信息
 const requestConfig = {
   baseUrl: 'http://192.168.8.109:19112/apigateway', // https://test.request.api
-  timeout: 10 * 1000, // 请求超时时间
+  timeout: 30 * 1000, // 请求超时时间
 }
 // 初始化请求实例
 const newHttp = new HTTP()
@@ -47,13 +47,15 @@ newHttp.interceptor.request = config => {
 }
 // 响应拦截器
 newHttp.interceptor.response = response => {
-  if (response.header['x-token'] && response.header['x-token-expire']) {
+  var responseToken = response?.header['x-token'] ?? ""
+  var responseTokenExpire = response?.header['x-token-expire'] ?? ""
+  if (responseToken && responseTokenExpire) {
     // 设置token缓存
-    wx.setStorageSync('token', response.header['x-token']);
+    wx.setStorageSync('token', responseToken);
     // 当前时间
     var timestamp = Date.parse(new Date());
     // 加上过期期限
-    var expiration = timestamp + response.header['x-token-expire'];
+    var expiration = timestamp + responseTokenExpire;
     // 存入缓存
     wx.setStorageSync('data_expiration', expiration);
   }

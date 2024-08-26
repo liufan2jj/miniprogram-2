@@ -1,0 +1,144 @@
+page {
+  background-color: #4b4747;
+}
+
+.user_warp {
+  background: #000;
+  padding: 0 20px;
+}
+
+.user_info {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.user_info_img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  margin-right: 6px;
+}
+
+.user_info_id {
+  font-size: 14px;
+  color: #fff;
+}
+
+.user_vip_warp {
+  border: 1px solid #ccc;
+  height: 88px;
+  border-radius: 8px 8px 0 0;
+  border-bottom: none;
+}
+
+.icon_list_warp {
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 20px;
+}
+
+.icon_item_desc {
+  color: #fff;
+  font-size: 12px;
+}
+
+.charge_list_warp {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px 20px;
+}
+
+.charge_item {
+  width: 32%;
+  border: 1px solid #cccccc;
+  text-align: center;
+  line-height: 32px;
+  position: relative;
+  padding-top: 18px;
+}
+
+.charge_item_discount {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 10px;
+  color: #fff;
+  background-color: #ccc;
+  width: 45px;
+  height: 16px;
+  line-height: 16px;
+  border-radius: 0 0 4px 0;
+}
+
+.charge_item_mon{
+  color: #fff;
+}
+
+.charge_item_Oprice {
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.charge_item_Dprice {
+  text-decoration: line-through;
+  color: #ccc;
+  font-size: 12px;
+}
+
+.btn_warp{
+  padding: 10px;
+}
+
+.btns{
+  background-color: #ccc;
+  text-align: center;
+  line-height: 54px;
+  border-radius: 32px;
+}
+
+/* 精选好剧--标题样式 */
+.jing-xuan-container {
+  padding: 10px 6px;
+  color: rgb(211, 206, 206);
+  font-weight: bold;
+}
+
+/* 精选好剧--外部容器样式 */
+.jing-xuan-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.jing-xuan-list:after {
+  content: "";
+  flex: auto;
+}
+
+/* 精选好剧--单个卡片样式 */
+.jing-xuan-item {
+  width: 30%;
+  margin: 8px 0;
+}
+
+/* 精选好剧--单个卡片-图片样式 */
+.jing-xuan-item image {
+  width: 100%;
+  height: 150px;
+  border-radius: 6px;
+}
+
+/* 精选好剧--单个卡片-剧名样式 */
+.jing-xuan-desc .desc {
+  font-size: 14px;
+  color: rgb(211, 206, 206);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 6px;
+  font-weight: bold;
+}

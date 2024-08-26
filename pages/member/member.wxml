@@ -1,0 +1,48 @@
+<!-- 用户信息：头像，id 会员信息-->
+<view class="user_warp">
+  <view class="user_info">
+    <image class="user_info_img" src="{{avatarUrl}}" mode="" />
+    <text class="user_info_id">ID:{{id}}</text>
+  </view>
+  <view class="user_vip_warp">
+    <view class="user_vip"></view>
+  </view>
+</view>
+<!-- 会员tips -->
+<view class="icon_list_warp">
+  <view class="icon_item" wx:for="{{iconList}}" wx:key="index">
+    <text class="icon_item_desc">{{item.desc}}</text>
+  </view>
+</view>
+<!-- 会员费用list -->
+<view class="charge_list_warp">
+  <view class="charge_item" wx:for="{{chargeList}}" wx:key="index">
+    <text class="charge_item_discount">{{item.discount}}</text>
+    <view class="charge_item_mon">{{item.mon}}</view>
+    <view class="charge_item_Oprice">{{item.original_price}}</view>
+    <view class="charge_item_Dprice">{{item.discount_price}}</view>
+  </view>
+</view>
+<view class="btn_warp">
+  <view class="btns">开通会员特权</view>
+</view>
+<!-- 精选好剧 -->
+<view class="jing-xuan-container">
+  <view class="jing-xuan-title">
+    <van-icon name="fire-o" color="#ee0a24" size="16px" />
+    <text>精选好剧</text>
+  </view>
+  <view class="jing-xuan-list">
+    <view wx:for="{{jingXuanList}}" wx:key="index" class="jing-xuan-item">
+      <image mode="scaleToFill" src="{{item.img}}" bindtap="goPlayVideo"></image>
+      <view class="jing-xuan-desc">
+        <view class="desc">{{item.desc}}</view>
+        <view class="num">
+          <van-icon name="play-circle" />{{item.num}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view style="height: 20px;"></view>

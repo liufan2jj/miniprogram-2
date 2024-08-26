@@ -1,3 +1,4 @@
+import Dialog from '@vant/weapp/dialog/dialog';
 //获取应用实例
 const app = getApp();
 Page({
@@ -6,6 +7,8 @@ Page({
    */
   data: {
     //img_url: config.imgUrl, //图片地址
+    show: false,
+    signShow: false,
     //签到模块
     totalNum: 0, //金币总数
     signNum: 0, //签到数
@@ -70,13 +73,42 @@ Page({
       totalNum: this.data.signNum * integral
     })
   },
+  // 签到规则弹窗
+  bindSignRules() {
+    this.setData({
+      show: true
+    });
+  },
+  onClose() {
+    this.setData({
+      show: false
+    });
+  },
+  onsignClose() {
+    this.setData({
+      signShow: false
+    });
+  },
   //签到
   bindSignIn(e) {
     this.data.signNum++
     this.data.totalNum += 5
+    this.setData({
+      signShow: true
+    });
+    this.setData({
+      signState: true
+    })
     this.transformList(this.data.n, this.data.integral)
   },
+  gochargePage() {
 
+  },
+  gomemberPage() {
+    wx.navigateTo({
+      url: '/pages/member/member',
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */

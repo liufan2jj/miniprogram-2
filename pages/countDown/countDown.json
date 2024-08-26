@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "van-transition": "@vant/weapp/transition/index"
-  },
-  "navigationBarTitleText": "春节倒计时"
-}
