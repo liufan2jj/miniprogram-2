@@ -1,45 +1,55 @@
-<van-toast id="van-toast" />
 <!-- 用户信息：头像，呢称 /登录 -->
 <view class="xx">
   <view class="xx_warp">
     <image src="{{avatarUrl}}" bindtap="goUserInfo" class="xx_tx"></image>
     <view class="xx_userWarp">
       <text class="xx_mz">{{name}}</text>
-      <view><text class="xx_title">ID:</text><text class="xx_num">{{id}}</text></view>
+      <view>
+        <text class="xx_title">ID:</text>
+        <text class="xx_num">{{id}}</text>
+        <image class="xx_copy" src="../../static/img/fuzhiwenjian.png" data-copy_text="{{id}}" bind:tap="copyText" />
+      </view>
       <view>
         <text class="xx_title">我的金币：</text><text class="xx_num">200</text>
       </view>
     </view>
   </view>
   <view class="btns">
-    <van-button round size="mini" type="info" bind:tap="goRecharge">充值金币</van-button>
+    <van-button round size="small" bind:tap="goRecharge">充值金币</van-button>
   </view>
 </view>
 <!-- banner插图 -->
-<view class="banner_warp">
-  <view class="banner"></view>
-</view>
-
-<!-- 循环数组 mySet  -->
-<view wx:for="{{mySet}}" wx:key="index" bindtap="onMySet" data-type="{{item.name}}">
-
-  <!-- 图标和循环myset中的文字  -->
-  <!-- <van-cell is-link title="{{item.name}}" link-type="navigateTo" url="{{item.url}}">
-    <image slot="right-icon" class="custom-icon" src="{{item.img}}" />
-  </van-cell> -->
-  <view class="vv_1">
-    <view class="vv_warp">
-      <image class="image1" src="{{item.img}}" />
-      <view class="iconsTitle">{{item.name}}</view>
-    </view>
-    <view class="icon">＞</view>
+<view class="banner_warp" bind:tap="gomemberPage">
+  <view class="banner_content">
+    <text class="banner_title">开通会员</text>
+    <text class="banner_text">开通会员, 全站影片免费看</text>
   </view>
+  <image class="banner_img" src="../../static/img/iconvip01.png" />
 </view>
-
-<!-- bottom图片 -->
+<!-- 循环数组 mySet  -->
+<view class="van-cell-warp">
+  <van-cell border="{{false}}" is-link wx:for="{{mySet}}" wx:key="index" bind:click="onMySet" data-type="{{item.name}}">
+    <view class="title-class" slot="title">
+      <image class="custom-icon" src="{{item.img}}" />
+      <view class="van-cell-text">
+        {{item.name}}
+      </view>
+      <button class="content-btn" wx:if="{{item.name=='联系客服'}}" open-type="contact" bindcontact="handleContact" session-from="sessionFrom">{{item.name}}</button>
+    </view>
+  </van-cell>
+</view>
+<!-- 收藏小程序遮罩层Tips -->
+<van-overlay show="{{ overlayShow }}" bind:click="onClickHide">
+  <view class="overlay_wrapper">
+    <image class="overlay_img" style="transform: translate(calc(-100% + {{rightPosition}}px), 0px);" src="../../static/img/overlay_tips.png" mode="" />
+  </view>
+</van-overlay>
+<!-- 底部图片 -->
 <view class="bottom_warp">
-  <view class="bottom" bind:tap="getwelfarePage"></view>
+  <view class="bottom">
+    <text class="bottom_title">看我! 这里可以免费领金币</text>
+    <van-button round size="mini" bind:tap="getwelfarePage">立即领取</van-button>
+  </view>
+  <image class="bottom_img" src="../../static/img/chiyouzongfene.png" />
 </view>
-
-<view style="height: 20px;"></view>
 <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">同步手机号</button> -->

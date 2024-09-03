@@ -1,12 +1,142 @@
 .charge-dialog {
   padding: 16px;
 }
+
 .charge-item {
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 8px;
   border: 1px solid rgba(0, 0, 0, 0.1)
 }
+
 .charge-item:active {
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+.jing-xuan-title {
+  display: flex;
+  align-items: center;
+}
+
+.van-cell-img {
+  width: 20px;
+  height: 20px;
+}
+
+.van-cell-text {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* 余额 */
+.xx_warp {
+  padding: 6px;
+}
+
+.xx_num {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.xx_title {
+  font-size: 14px;
+}
+
+/* banner图片 */
+.banner_warp {
+  background-image: linear-gradient(to right bottom, #f0f0f0, #e6e6e6, #dbdbdc, #d1d1d3, #c6c7c9, #c2c4c6, #bec1c3, #babec0, #bcc1c3, #bdc4c6, #bfc8c9, #c1cbcb);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 82px;
+  position: relative;
+}
+
+.banner_content {
+  color: rgb(58, 56, 56);
+  padding: 10px;
+}
+
+.banner_title {
+  font-weight: bold;
+  font-size: 26px;
+}
+
+.banner_text {
+  font-size: 16px;
+  color: #797575;
+}
+
+.banner_img {
+  width: 64px;
+  height: 64px;
+  transform: rotate(13deg);
+  position: absolute;
+  right: 2px;
+  opacity: 0.44;
+  top: 16px;
+}
+
+.charge_title {
+  text-align: center;
+  padding: 8px 0 0 0;
+  font-size: 12px;
+}
+
+/* 充值列表 */
+.charge_item {
+  width: 100%;
+  text-align: center;
+  line-height: 40px;
+  position: relative;
+  padding-top: 18px;
+}
+
+.charge_item_discount {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 10px;
+  background-color: #ccc;
+  width: 45px;
+  height: 16px;
+  line-height: 16px;
+  border-radius: 0 0 4px 0;
+}
+
+.charge_item_Oprice {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.charge_item_Dprice {
+  color: #656161;
+  font-size: 10px;
+}
+
+.charge_item_checked {
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translate(25%, -25%);
+  width: 28px;
+  height: 28px;
+  color: #e43d3d;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* 充值提示 */
+.charge_tip_warp {
+  padding: 0 10px;
+}
+
+.charge_tips {
+  color: #6f6c6c;
+  font-size: 12px;
+}
+
+.charge_rule {
+  color: #1186ec;
 }

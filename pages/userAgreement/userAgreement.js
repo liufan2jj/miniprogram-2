@@ -1,4 +1,3 @@
-// pages/userAgreement/userAgreement.js
 Page({
 
   /**

@@ -33,9 +33,25 @@ Component({
    * 组件的初始数据
    */
   data: {
+    pageShow: false,
   },
   lifetimes: {
-
+    attached() {
+      if (getCurrentPages()[0].route != "pages/tuijian/tuijian") {
+        this.setData({
+          pageShow: false
+        })
+      } else {
+        this.setData({
+          pageShow: true
+        })
+      }
+    }
+  },
+  observers: {
+    pageShow() {
+      this.goBack()
+    }
   },
   /**
    * 组件的方法列表
@@ -47,6 +63,16 @@ Component({
         showLeft: true,
         leftsideAreaList: []
       })
+    },
+    goBack() {
+      const pm = this.getPlayerManager()
+      if (getCurrentPages()[0].route == "pages/tuijian/tuijian") {
+        pm.onBack(function () {
+          pm.switchTab({
+            url: '/pages/juchang/juchang',
+          })
+        })
+      }
     },
     getPlayerManager() {
       return plugin.PlayletManager.getPageManager(this.data.playerId)

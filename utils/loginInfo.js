@@ -53,8 +53,28 @@ async function getPhone(params) {
 
   }
 }
-
+// 缓存是否过期
+function _isExpiration() {
+  // 当前时间
+  var timestamp = Date.parse(new Date());
+  // 缓存中的过期时间
+  var data_expiration = wx.getStorageSync("data_expiration");
+  // 如果缓存中没有data_expiration，说明也没有token，还未登录
+  if (data_expiration) {
+    // 如果超时了，清除缓存，重新登录
+    if (timestamp > data_expiration) {
+      wx.removeStorageSync('token')
+      wx.removeStorageSync('data_expiration')
+      return true;
+    } else {
+      return false;
+    }
+  } else {
+    return true
+  }
+}
 export default {
   loginUser,
-  getPhone
+  getPhone,
+  _isExpiration
 }

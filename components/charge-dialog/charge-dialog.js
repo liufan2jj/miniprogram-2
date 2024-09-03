@@ -36,6 +36,7 @@ Component({
     _isInitChargeDialog: false,
     chargeList: [],
     selectIndex: -1,
+    current: -1,
   },
   lifetimes: {
     attached() {
@@ -72,24 +73,81 @@ Component({
     getPlayerManager() {
       return plugin.PlayletManager.getPageManager(this.data.playerId)
     },
+    gomemberPage() {
+      const pm = this.getPlayerManager()
+      pm.navigateTo({
+        url: '/pages/member/member',
+      })
+    },
+    // 充值选择
+    checkCharge(e) {
+      const {
+        index,
+        original_price,
+      } = e.currentTarget.dataset
+      this.setData({
+        current: index
+      })
+      console.log(index, this.data.current, original_price)
+    },
+    // 充值规则
+    gochargeRule() {
+      const pm = this.getPlayerManager()
+      pm.navigateTo({
+        url: '/pages/userAgreement/userAgreement?tabs=0',
+      })
+    },
+    // 会员协议
+    gomemberAgreement() {
+      const pm = this.getPlayerManager()
+      pm.navigateTo({
+        url: '/pages/userAgreement/userAgreement?tabs=1',
+      })
+    },
     onShowChargeDialog() {
       console.log('onShowChargeDialog')
       // 根据已有的参数初始化下弹窗
       this.setData({
         chargeList: [{
-          name: '充100得1.3千币'
-        }, {
-          name: '充300得5千币'
-        }, {
-          name: '充500得6千币'
-        }]
+            discount: '',
+            original_price: "¥2",
+            discount_price: "200金币"
+          },
+          {
+            discount: '特惠',
+            original_price: "¥9.9",
+            discount_price: "200 + 送200"
+          },
+          {
+            discount: '',
+            original_price: "¥29.9",
+            discount_price: "2990 + 送1000"
+          },
+          {
+            discount: '热门',
+            original_price: "¥49.9",
+            discount_price: "4990 + 送2500"
+          },
+          {
+            discount: '',
+            original_price: "¥99.9",
+            discount_price: "9990 + 送5000"
+          },
+          {
+            discount: '性价比',
+            original_price: "¥300",
+            discount_price: "30000 + 送20000"
+          },
+        ]
       })
     },
     onHideChargeDialog() {
       console.log('onHideChargeDialog')
     },
     onSelectChargeItem(e) {
-      const { index } = e.currentTarget.dataset
+      const {
+        index
+      } = e.currentTarget.dataset
       console.log('onSelectChargeItem index', index)
       this.setData({
         selectIndex: index
@@ -111,7 +169,11 @@ Component({
       console.log('onSelectChargeItem index', index)
       const item = this.data.chargeList[index]
       const pm = this.getPlayerManager()
-      const { serialNo, dramaId, srcAppid } = this.data
+      const {
+        serialNo,
+        dramaId,
+        srcAppid
+      } = this.data
       // TODO: 调用后台接口进行充值并解锁此集，返回充值的数据
       wx.request({
         url: 'http://localhost:8888/videoplayer/charge',

@@ -1,3 +1,7 @@
+.skit-player-open-area-leftside {
+  z-index: 100;
+}
+
 .open-area-left {
   left: 72px;
   top: 20px;

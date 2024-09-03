@@ -1,41 +1,38 @@
 .totalNum {
-  padding: 8px;
+  padding: 0 10px;
+  height: 80px;
+  background-image: linear-gradient(to bottom, #efefef, #e8e8ea, #e3e1e4, #ddd9de, #d8d2d8);
 }
 
 .total_text {
-  color: rgb(236, 135, 67);
-}
-
-.gap_warp {
-  height: 50px;
-  background: #ccc;
-  position: relative;
+  color: #000;
+  font-size: 16px;
+  font-family: fantasy;
 }
 
 .container-warp {
-  position: absolute;
-  top: 0%;
-  left: 50%;
-  width: 96%;
-  z-index: 1000;
-  transform: translate(-50%, 10px);
+  padding: 0 10px;
+  position: relative;
+  top: -41px;
 }
 
-.sing_warp {
-  background: #fff;
-  border-radius: 8px 8px 12px 12px;
-  border: 1px solid #efefef;
-  border-top: none;
-}
-
-/* 累积签单天数 */
-.thead {
-  display: flex;
-  justify-content: space-between;
-  background: #efebeb;
-  line-height: 40px;
+/* 签到面板 */
+.sign_thead {
   border-radius: 8px 8px 0 0;
   padding: 0 6px;
+  background: #efefef;
+}
+
+.sign_content {
+  border: 1px solid #efefef;
+  padding: 8px;
+  border-radius: 0 0 8px 8px;
+}
+
+.sign_title {
+  display: flex;
+  justify-content: space-between;
+  line-height: 40px;
 }
 
 .mm {
@@ -93,7 +90,7 @@
   height: 2rpx;
 }
 
-/* 签到按钮样式 */
+/* 签到按钮 */
 .the-btn {
   padding: 4px;
 }
@@ -101,30 +98,26 @@
 .btn {
   height: 36px;
   line-height: 36px;
-  background: rgb(236, 135, 67);
+  background: #635f5f;
   border-radius: 16px;
   text-align: center;
   color: #fff;
   width: 78%;
 }
 
-/* tips */
 .tips {
   font-size: 12px;
   font-family: fantasy;
   padding: 10px 10px;
 }
 
-/* 活动面板样式 */
+/* 活动面板 */
 .task_warp {
-  background: #fff;
-  border-radius: 8px 8px 12px 12px;
-  border: 1px solid #efefef;
-  border-top: none;
+  margin: 20px 0;
 }
 
 .task_head {
-  background: #efebeb;
+  background: #efefef;
   line-height: 40px;
   border-radius: 8px 8px 0 0;
   padding: 0 6px;
@@ -136,7 +129,9 @@
 }
 
 .todoList_warp {
-  padding: 8px 10px;
+  padding: 8px;
+  border: 1px solid #efefef;
+  border-radius: 0 0 8px 8px;
 }
 
 .todo_item {
@@ -161,18 +156,24 @@
   justify-content: space-around;
 }
 
-.bottom_left {
-  width: 120px;
-  height: 54px;
+.bottom_content {
+  width: 44%;
+  height: 66px;
   border: 1px solid #ccc;
-  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 6px;
 }
 
-.bottom_right {
-  width: 120px;
-  height: 54px;
-  border: 1px solid #ccc;
-  text-align: center;
+.bottom_title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.custom-icon {
+  width: 32px;
+  height: 32px;
 }
 
 /* 签到规则弹窗样式 */
@@ -186,14 +187,16 @@
   line-height: 32px;
 }
 
-.signTips_image_warp{
+.signTips_image_warp {
   display: flex;
   justify-content: center;
 }
-.signTips_image{
+
+.signTips_image {
   width: 40px;
   height: 40px;
 }
+
 /* progress {
   width: 600rpx;
   position: absolute;

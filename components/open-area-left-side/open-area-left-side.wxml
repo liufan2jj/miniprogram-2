@@ -1,3 +1,5 @@
-<view class="open-area-left-side">
+<!-- <navigation-bar title="" back="{{!pageShow}}" color="black" background="#FFF"></navigation-bar> -->
+<!-- <view class="open-area-left-side">
   <view bind:tap="onOperate" class="btn-operate">操作</view>
-</view>
+</view> -->
+<custom-tab-bar wx:if="{{pageShow}}" playerId="{{playerId}}"></custom-tab-bar>

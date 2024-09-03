@@ -1,1 +1,4 @@
-/* pages/bingeWatching/bingeWatching.wxss */
+page {
+  /* padding-bottom: calc(env(safe-area-inset-bottom) + 24rpx + 50px); */
+  padding: 0 10px;
+}

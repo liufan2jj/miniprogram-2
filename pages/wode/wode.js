@@ -1,15 +1,16 @@
-import Toast from '@vant/weapp/toast/toast';
 import request from '../../utils/loginInfo'
 Page({
   data: {
+    rightPosition: "",
+    overlayShow: false,
     show: false,
     avatarUrl: "",
     name: "",
-    id: "",
+    id: "88888888",
     userInfo: {},
     mySet: [{
         'name': "收藏小程序",
-        'img': "../../static/img/shoucang.png",
+        'img': "../../static/img/bg-collection.png",
       },
       {
         'name': "联系客服",
@@ -41,16 +42,48 @@ Page({
       url: '/pages/updateUserinfo/updateUserinfo',
     })
   },
+  // 复制功能
+  copyText(e) {
+    let key = e.currentTarget.dataset.copy_text;
+    console.log(e.currentTarget.dataset)
+    wx.setClipboardData({ //设置系统剪贴板的内容
+      data: key,
+      success(res) {
+        console.log(res, key);
+        wx.getClipboardData({ // 获取系统剪贴板的内容
+          success(res) {
+            wx.showToast({
+              title: '复制成功',
+            })
+          }
+        })
+      }
+    })
+  },
+  onClickHide() {
+    this.setData({
+      overlayShow: false
+    });
+  },
   /**
    * 点击我的预约等板块后进行页面跳转
    */
   onMySet: function (e) {
     switch (e.currentTarget.dataset.type) {
       case "收藏小程序":
-        Toast('我的预约');
+        const {
+          right
+        } = wx.getMenuButtonBoundingClientRect()
+        this.setData({
+          overlayShow: true,
+          rightPosition: right
+        });
         break;
-      case "我的收藏":
-        Toast('联系客服');
+      case "联系客服":
+        wx.showToast({
+          title: '联系客服',
+          icon: "none"
+        })
         break;
       case "充值记录":
         wx.navigateTo({
@@ -71,10 +104,24 @@ Page({
         break;
     }
   },
-  getwelfarePage(){
+  goRecharge() {
+    wx.navigateTo({
+      url: '/pages/recharge/recharge',
+    })
+  },
+  gomemberPage() {
+    wx.navigateTo({
+      url: '/pages/member/member',
+    })
+  },
+  getwelfarePage() {
     wx.navigateTo({
       url: '/pages/welfare/welfare',
     })
+  },
+  handleContact(e) {
+    console.log(e.detail.path)
+    console.log(e.detail.query)
   },
   // 绑定手机号
   getPhoneNumber(e) {
@@ -102,6 +149,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 3
+      })
+    }
     this.data.userInfo = wx.getStorageSync('userInfo')
     if (this.data.userInfo) {
       this.setData({
@@ -135,13 +187,13 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    console.log('下拉了')
+
   },
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    console.log('上拉了')
+
   },
   /**
    * 用户点击右上角分享

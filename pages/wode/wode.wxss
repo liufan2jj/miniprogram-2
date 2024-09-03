@@ -1,3 +1,9 @@
+page {
+  /* padding-bottom: calc(env(safe-area-inset-bottom) + 24rpx + 50px); */
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .xx {
   display: flex;
   justify-content: space-between;
@@ -39,61 +45,122 @@
   font-size: 14px;
 }
 
+.xx_copy {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+/* 充值金币按钮 */
 .btns {
   display: flex;
   align-items: center;
 }
 
+/* banner图片 */
 .banner_warp {
-  padding: 0 10px;
-}
-
-.banner {
-  height: 100px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-
-.vv {
-  background-color: #ebebeb;
-  height: 950rpx;
-}
-
-/* 图标和循环myset中的文字 */
-.vv_1 {
-  line-height: 110rpx;
-  background-color: #ffffff;
+  background-image: linear-gradient(to right bottom, #f0f0f0, #e6e6e6, #dbdbdc, #d1d1d3, #c6c7c9, #c2c4c6, #bec1c3, #babec0, #bcc1c3, #bdc4c6, #bfc8c9, #c1cbcb);
+  border-radius: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10px;
+  height: 114px;
+  position: relative;
 }
 
-.vv_warp {
+.banner_content {
+  display: flex;
+  line-height: 26px;
+  flex-direction: column;
+  color: rgb(58, 56, 56);
+  padding: 10px;
+}
+
+.banner_title {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.banner_text {
+  font-size: 12px;
+  color: #797575;
+}
+
+.banner_img {
+  width: 114px;
+  height: 100px;
+  transform: rotate(13deg);
+  position: absolute;
+  right: 2px;
+  opacity: 0.44;
+  top: 16px;
+}
+
+/* 按钮列表 */
+.van-cell-warp {
+  margin: 20px 0;
+}
+
+.title-class {
   display: flex;
   align-items: center;
 }
 
-.image1 {
+.custom-icon {
   width: 24px;
   height: 24px;
 }
 
-.iconsTitle {
+.van-cell-text {
   margin-left: 4px;
   font-size: 16px;
   font-family: fantasy;
 }
 
-.icon {
-  color: #ccc;
+.content-btn {
+  position: absolute;
+  top: 0;
+  left: 0px;
+  opacity: 0;
+  width: 100%;
+  padding: 0;
+  height: 100%;
 }
 
+.overlay_wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.overlay_img {
+  position: absolute;
+  top: 0;
+}
+
+/* 底部图片 */
 .bottom_warp {
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-image: linear-gradient(to right, #857e7e, #9f9999, #bab4b4, #d6d1d1, #f2eeee);
 }
 
 .bottom {
-  height: 100px;
-  border: 1px solid #ccc;
+  display: flex;
+  line-height: 74rpx;
+  flex-direction: column;
+  color: #fff;
+}
+
+.bottom_title {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.bottom_img {
+  width: 60px;
+  height: 60px;
 }

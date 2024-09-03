@@ -1,6 +1,5 @@
-import Toast from '@vant/weapp/toast/toast';
 // 引用的utils/playerManager.js的代码
-const PlayerManager = require('../../utils/playerManager').default
+var PlayerManager = require('../../utils/playerManager')
 
 Page({
 
@@ -10,22 +9,16 @@ Page({
   data: {
     imgList: ['https://img-blog.csdnimg.cn/5589ae9720df44fda0967faaa288a553.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBALeW4jOWGgC0=,size_20,color_FFFFFF,t_70,g_se,x_16', 'https://img-blog.csdnimg.cn/5580029c6bed471487fe93983088cbae.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBALeW4jOWGgC0=,size_20,color_FFFFFF,t_70,g_se,x_16', 'https://img-blog.csdnimg.cn/1472745c740d42caa002fb5b24b0069a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBALeW4jOWGgC0=,size_20,color_FFFFFF,t_70,g_se,x_16'],
     iconList: [{
-        name: "bar-chart-o",
-        color: "#43da47",
-        size: "32px",
+        icon: "../../static/img/paihangbang.png",
         text: "排行"
       },
       {
-        name: "point-gift-o",
-        color: "#43da47",
-        size: "32px",
+        icon: "../../static/img/fulizhongxin.png",
         text: "福利"
       },
       {
-        name: "vip-card-o",
-        color: "#43da47",
-        size: "32px",
-        text: "Vip"
+        icon: "../../static/img/huangguan.png",
+        text: "VIP"
       }
     ],
     jingXuanList: [{
@@ -48,13 +41,23 @@ Page({
         desc: "wwwwwwwwwwwwwwww爆炸新闻",
         num: "9999万 播放量"
       },
+      {
+        img: 'https://img-blog.csdnimg.cn/1472745c740d42caa002fb5b24b0069a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBALeW4jOWGgC0=,size_20,color_FFFFFF,t_70,g_se,x_16',
+        desc: "wwwwwwwwwwwwwwww爆炸新闻",
+        num: "9999万 播放量"
+      },
+      {
+        img: 'https://img-blog.csdnimg.cn/1472745c740d42caa002fb5b24b0069a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBALeW4jOWGgC0=,size_20,color_FFFFFF,t_70,g_se,x_16',
+        desc: "wwwwwwwwwwwwwwww爆炸新闻",
+        num: "9999万 播放量"
+      },
     ],
     indicatorDots: true,
     vertical: false,
     autoplay: true,
     interval: 2000,
     duration: 500,
-    value:'',
+    value: '',
   },
   // 搜索栏跳转搜索页
   goSearchPage() {
@@ -75,7 +78,7 @@ Page({
           url: '/pages/welfare/welfare',
         })
         break;
-      case "Vip":
+      case "VIP":
         wx.navigateTo({
           url: '/pages/member/member',
         })
@@ -87,8 +90,8 @@ Page({
   // 点击跳转播放器
   goPlayVideo() {
     PlayerManager.navigateToPlayer({
-      srcAppid: 'wx1234567890123456', // 剧目提审方 appid
-      dramaId: '100001', // 小程序管理后台的媒资管理上传的剧目的 dramaId
+      srcAppid: 'wx8fe8a8ed30593822', // 剧目提审方 appid
+      dramaId: '100740', // 小程序管理后台的媒资管理上传的剧目的 dramaId
       serialNo: '1', // 剧目中的某一集
       extParam: encodeURIComponent('a=b&c=d'), // 扩展字段,需要encode
     })
@@ -111,7 +114,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 2
+      })
+    }
   },
 
   /**

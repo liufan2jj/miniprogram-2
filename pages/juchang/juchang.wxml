@@ -1,39 +1,39 @@
-<van-toast id="van-toast" />
-<view id="warp">
-  <!-- 搜索栏 -->
-  <view capture-catch:touchstart="goSearchPage">
-    <van-search value="{{ value }}" placeholder="请输入搜索关键词" />
-  </view>
-  <!-- 轮播图 -->
-  <swiper interval="5000" indicator-dots="true" autoplay="true" circular="true">
-    <swiper-item wx:for="{{imgList}}" wx:key="index">
-      <image mode="scaleToFill" src="{{item}}" bindtap="goPlayVideo"></image>
-    </swiper-item>
-  </swiper>
-  <!-- 排行，福利，Vip -->
-  <view class="icon-container">
-    <view wx:for="{{iconList}}" wx:key="index" class="iconWarp" bindtap="goClassification" data-type="{{item.text}}">
-      <van-icon name="{{item.name}}" color="{{item.color}}" size="{{item.size}}" />
-      <text>{{item.text}}</text>
+<!-- 搜索栏 -->
+<view capture-catch:touchstart="goSearchPage">
+  <van-search value="{{ value }}" placeholder="请输入搜索关键词" />
+</view>
+<!-- 轮播图 -->
+<swiper interval="5000" indicator-dots="true" autoplay="true" circular="true">
+  <swiper-item wx:for="{{imgList}}" wx:key="index">
+    <image mode="scaleToFill" src="{{item}}" bindtap="goPlayVideo"></image>
+  </swiper-item>
+</swiper>
+<!-- 排行，福利，Vip -->
+<van-grid column-num="3" border="{{ false }}">
+  <van-grid-item use-slot wx:for="{{iconList}}" wx:key="index" data-type="{{item.text}}" bind:click="goClassification">
+    <view class="custom-icon-warp">
+      <image class="custom-icon" src="{{item.icon}}" />
     </view>
-  </view>
-  <!-- 精选好剧 -->
-  <view class="jing-xuan-container">
-    <view class="jing-xuan-title">
-      <van-icon name="fire-o" color="#ee0a24" size="16px" />
-      <text>精选好剧</text>
+    <text class="custom-title">{{item.text}}</text>
+  </van-grid-item>
+</van-grid>
+<!-- 精选好剧 -->
+<view>
+  <van-cell border="{{false}}">
+    <view class="jing-xuan-title" slot="title">
+      <image class="van-cell-img" src="../../static/img/huaban.png" />
+      <view class="van-cell-text">精选好剧</view>
     </view>
-    <view class="jing-xuan-list">
-      <view wx:for="{{jingXuanList}}" wx:key="index" class="jing-xuan-item">
-        <image mode="scaleToFill" src="{{item.img}}" bindtap="goPlayVideo"></image>
-        <view class="jing-xuan-desc">
-          <view class="desc">{{item.desc}}</view>
-          <view class="num">
-            <van-icon name="play-circle" />{{item.num}}
-          </view>
+  </van-cell>
+  <van-grid column-num="3" border="{{ false }}">
+    <van-grid-item use-slot wx:for="{{jingXuanList}}" wx:key="index">
+      <image class="jing-xuan-img" src="{{item.img}}" bindtap="goPlayVideo"></image>
+      <view class="jing-xuan-desc">
+        <view class="desc">{{item.desc}}</view>
+        <view class="num">
+          <van-icon name="play-circle" />{{item.num}}
         </view>
       </view>
-    </view>
-  </view>
-  <view style="height: 20px;"></view>
+    </van-grid-item>
+  </van-grid>
 </view>

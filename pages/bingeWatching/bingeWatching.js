@@ -1,5 +1,5 @@
 // 引用的utils/playerManager.js的代码
-const PlayerManager = require('../../utils/playerManager').default
+var PlayerManager = require('../../utils/playerManager')
 Page({
 
   /**
@@ -11,14 +11,11 @@ Page({
   // 无我看过或在追剧时触发去看剧按钮
   onTapEmpty: function (e) {
     PlayerManager.navigateToPlayer({
-      srcAppid: 'wx1234567890123456', // 剧目提审方 appid
-      dramaId: '100001', // 小程序管理后台的媒资管理上传的剧目的 dramaId
+      srcAppid: 'wx8fe8a8ed30593822', // 剧目提审方 appid
+      dramaId: '100740', // 小程序管理后台的媒资管理上传的剧目的 dramaId
       serialNo: '1', // 剧目中的某一集
       extParam: encodeURIComponent('a=b&c=d'), // 扩展字段,需要encode
     })
-    // wx.switchTab({
-    //   url: '/pages/juchang/juchang',
-    // })
   },
   // 点击了对应的剧
   onClick: function (e) {
@@ -46,7 +43,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 0
+      })
+    }
   },
 
   /**

@@ -1,5 +1,4 @@
 <!--pages/login/login.wxml-->
-<van-toast id="van-toast" />
 <view class="v1" style="height:{{clientHeight?clientHeight+'px':'auto'}}">
 
   <!-- v2父容器  子view使用绝对布局 -->

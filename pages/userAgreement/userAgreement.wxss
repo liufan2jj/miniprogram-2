@@ -1,9 +1,13 @@
-
-.tetx_warp{
-  padding: 0 10px;
+.text_warp {
+  padding: 10px;
   line-height: 23px;
 }
-.text_indent{
+
+.text_title {
+  font-weight: bold;
+}
+
+.text_indent {
   text-indent: 16px;
   text-shadow: 1px;
 }

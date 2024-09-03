@@ -3,5 +3,3 @@
 
 <!-- 在追的剧 -->
 <fav-list showHeader="{{true}}" bind:tapempty="onTapEmpty" bind:click="onClick" bind:unfav="onUnFav" url="/pages/juchang/juchang"></fav-list>
-
-<view style="height: 20px;"></view>

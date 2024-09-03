@@ -1,4 +1,5 @@
 import {
+  requestGet,
   requestPost,
 } from '../utils/request'
 // 登录接口
@@ -12,7 +13,6 @@ export function login(data) {
     loading: false
   });
 }
-
 // 修改用户昵称头像
 export function upateUserInfo(data) {
   return requestPost({

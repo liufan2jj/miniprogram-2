@@ -1,6 +1,7 @@
 const ACCESS_TOKEN = 'token' // token凭证的key
-
+import request from './loginInfo'
 import HTTP from './http'
+
 // 创建配置信息
 const requestConfig = {
   baseUrl: 'http://192.168.8.109:19112/apigateway', // https://test.request.api
@@ -37,9 +38,11 @@ newHttp.interceptor.request = config => {
   // 添加 Token 凭证
   if (typeof config.header !== 'object') config.header = {}
   var value = wx.getStorageSync('token')
-  if (value) {
+  if (value && request._isExpiration() == false) {
     // Do something with return value
     config.header['Authorization'] = 'Bearer ' + value
+  } else {
+    console.log("无token || token过期")
   }
   // 这里可以自定义统一处理一下 请求的参数 
   // config.data = buildOptions( config.data )
@@ -47,18 +50,6 @@ newHttp.interceptor.request = config => {
 }
 // 响应拦截器
 newHttp.interceptor.response = response => {
-  var responseToken = response?.header['x-token'] ?? ""
-  var responseTokenExpire = response?.header['x-token-expire'] ?? ""
-  if (responseToken && responseTokenExpire) {
-    // 设置token缓存
-    wx.setStorageSync('token', responseToken);
-    // 当前时间
-    var timestamp = Date.parse(new Date());
-    // 加上过期期限
-    var expiration = timestamp + responseTokenExpire;
-    // 存入缓存
-    wx.setStorageSync('data_expiration', expiration);
-  }
   // 关闭 Loading
   if (response.loading) {
     requestNum--
@@ -81,6 +72,18 @@ newHttp.interceptor.response = response => {
     } = response.data
     switch (code) {
       case 200: // 成功响应
+        var responseToken = response?.header['x-token'] ?? ""
+        var responseTokenExpire = response?.header['x-token-expire'] ?? ""
+        if (responseToken && responseTokenExpire) {
+          // 设置token缓存
+          wx.setStorageSync('token', responseToken);
+          // 当前时间
+          var timestamp = Date.parse(new Date());
+          // 加上过期期限
+          var expiration = timestamp + responseTokenExpire;
+          // 存入缓存
+          wx.setStorageSync('data_expiration', expiration);
+        }
         return response.data
         break;
       case 401: // 登录凭证过期 重新登录
@@ -95,11 +98,16 @@ newHttp.interceptor.response = response => {
           })
           let timerS = setTimeout(() => {
             clearTimeout(timerS)
-            // 这里做退出登录的操作
-            wx.removeStorageSync('token')
-            wx.clearStorage()
-            wx.redirectTo({
-              url: '/pages/login/login'
+            // 这里做退出登录/刷新登录的操作
+            wx.login({
+              async success(res) {
+                if (res.code) {
+                  var code = res.code
+                  await request.loginUser(code)
+                } else {
+                  console.log('登录失败！' + res.errMsg)
+                }
+              }
             })
           }, 1500)
         }, 2000)
@@ -119,17 +127,6 @@ newHttp.interceptor.response = response => {
         })
         return false
     }
-  } else if (response.statusCode === 401) {
-    const {
-      code,
-      msg
-    } = response.data
-    wx.showToast({
-      title: msg,
-      icon: 'none',
-      duration: 2000
-    })
-    return false
   } else if (response.statusCode === 500) {
     const {
       code,

@@ -6,19 +6,24 @@ function navigateToPlayer(obj) {
   // 变量${srcAppid}是提审方appid
   // 变量${serialNo}是活动的页面路径
   // 变量${extParam}是分享参数，分享的卡片和二维码会在分享的链接上携带此参数
-  const { extParam, dramaId, srcAppid } = obj
+  const {
+    extParam,
+    dramaId,
+    srcAppid
+  } = obj
   wx.navigateTo({
     url: `plugin-private://wx94a6522b1d640c3b/pages/playlet/playlet?dramaId=${dramaId}&srcAppid=${srcAppid}&extParam=${extParam || ''}`
   })
 }
-function deepClone(obj) {  
+
+function deepClone(obj) {
   if (typeof obj !== 'object' || !obj) return obj
-  let newObj = obj instanceof Array ? [] : {}  
-  for (let key in obj) {    
-    if (typeof obj[key] === 'object') {      
-      newObj[key] = deepClone(obj[key])    
+  let newObj = obj instanceof Array ? [] : {}
+  for (let key in obj) {
+    if (typeof obj[key] === 'object') {
+      newObj[key] = deepClone(obj[key])
     } else {
-      newObj[key] = obj[key]    
+      newObj[key] = obj[key]
     }
   }
   return newObj
@@ -36,7 +41,9 @@ const proto = {
     const pm = playletPlugin.PlayletManager.getPageManager(info.playerId)
     this.pm = pm
     // encryptedData是经过开发者后台加密后(不要在前端加密)的数据，具体实现见下面的加密章节
-    this.getEncryptData({serialNo: info.serialNo}).then(res => {
+    this.getEncryptData({
+      serialNo: info.serialNo
+    }).then(res => {
       // encryptedData是后台加密后的数据，具体实现见下面的加密章节
       pm.setCanPlaySerialList({
         data: res.encryptedData,
@@ -51,9 +58,9 @@ const proto = {
     this._initShare()
     // 参考文档章节“数据上报”
     pm.onDataReport((obj) => {
-      if (obj.event === playletPlugin.REPORT_DATA_EVENTS.VIDEO_PLAY
-        || obj.event === playletPlugin.REPORT_DATA_EVENTS.CHANGE_SERIAL
-        || obj.event === playletPlugin.REPORT_DATA_EVENTS.VIDEO_PAUSE
+      if (obj.event === playletPlugin.REPORT_DATA_EVENTS.VIDEO_PLAY ||
+        obj.event === playletPlugin.REPORT_DATA_EVENTS.CHANGE_SERIAL ||
+        obj.event === playletPlugin.REPORT_DATA_EVENTS.VIDEO_PAUSE
       ) {
         console.log('>>>>onDataReport obj', obj)
       }
@@ -62,18 +69,15 @@ const proto = {
     pm.setActivityInfo({
       url: ''
     })
+
     // 设置运营区域
     pm.updateOpenArea({
       showLeft: false,
       showRight: false,
-      leftsideAreaList: [
-        {
-          left: 16, // 类似绝对定位的样式
-          top: 20,
-          width: 72,
-          height: 32
-        },
-      ],
+      leftsideAreaList: [{
+        left: 0, // 类似绝对定位的样式
+        top: -48,
+      }, ],
       ext: 'extInfo',
     })
   },
@@ -95,6 +99,11 @@ const proto = {
       // 如果设置了withShareTicket为true，可通过文档的方法获取更多信息
       // https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/share.html
       const enterOptions = wx.getEnterOptionsSync()
+      pm.onBack(function () {
+        pm.switchTab({
+          url: '/pages/juchang/juchang',
+        })
+      })
       console.log('getLaunch options shareTicket', enterOptions.shareTicket)
     }).catch(err => {
       console.log('getLaunch options query err', err)
@@ -106,7 +115,9 @@ const proto = {
     // TODO: 碰到不可以解锁的剧集，会触发此事件，这里可以进行扣币解锁逻辑，如果用户无足够的币，可调用下面的this.isCanPlay设置
     console.log('onCheckIsCanPlay param', param)
     var serialNo = param.serialNo
-    this.getEncryptData({serialNo: serialNo}).then(res => {
+    this.getEncryptData({
+      serialNo: serialNo
+    }).then(res => {
       // encryptedData是后台加密后的数据，具体实现见下面的加密章节
       this.pm.isCanPlay({
         data: res.encryptedData,
@@ -115,9 +126,14 @@ const proto = {
     })
   },
   getEncryptData(obj) {
-    const { serialNo } = obj
+    const {
+      serialNo
+    } = obj
     // TODO: 此接口请求后台，返回下面的setCanPlaySerialList接口需要的加密参数
-    const { srcAppid, dramaId } = this.pm.getInfo()
+    const {
+      srcAppid,
+      dramaId
+    } = this.pm.getInfo()
     console.log('getEncryptData start', srcAppid, dramaId, serialNo)
     return new Promise((resolve, reject) => {
       // TODO: 开发者后台需要实现此接口，相关的代码node的示例可参考node目录
@@ -142,6 +158,7 @@ const proto = {
   },
 
 }
+
 function PlayerManager() {
   var newProto = Object.assign({}, proto)
   for (const k in newProto) {
@@ -158,4 +175,4 @@ function PlayerManager() {
 }
 
 PlayerManager.navigateToPlayer = navigateToPlayer
-export default PlayerManager
+module.exports = PlayerManager

@@ -1,4 +1,4 @@
-<van-tabs sticky active="{{ active }}" bind:change="onChange">
+<van-tabs sticky animated swipeable active="{{ active }}" bind:change="onChange">
   <!-- 消费记录 -->
   <van-tab title="消费">
     <van-cell-group>
@@ -12,4 +12,3 @@
     </van-cell-group>
   </van-tab>
 </van-tabs>
-<view style="height: 20px;"></view>

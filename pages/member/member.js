@@ -5,23 +5,24 @@ Page({
    * 页面的初始数据
    */
   data: {
+    current: 2,
     userInfo: {},
     avatarUrl: "",
     id: "",
     iconList: [{
-        icon: '',
+        icon: '../../static/img/VIP.png',
         desc: "会员剧集"
       },
       {
-        icon: '',
+        icon: '../../static/img/zhekou.png',
         desc: "看剧折扣"
       },
       {
-        icon: '',
+        icon: '../../static/img/guanggaotequan-xiao.png',
         desc: "广告特权"
       },
       {
-        icon: '',
+        icon: '../../static/img/huazhi.png',
         desc: "原画画质"
       },
     ],
@@ -62,7 +63,18 @@ Page({
       },
     ],
   },
-
+  // 充值选择
+  checkCharge(e) {
+    const {
+      index,
+      original_price,
+      mon
+    } = e.currentTarget.dataset
+    this.setData({
+      current: index
+    })
+    console.log(index, this.data.current, original_price, mon)
+  },
   /**
    * 生命周期函数--监听页面加载
    */

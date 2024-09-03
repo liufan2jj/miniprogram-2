@@ -1,10 +1,9 @@
 {
   "usingComponents": {
-    "van-collapse": "@vant/weapp/collapse/index",
-    "van-collapse-item": "@vant/weapp/collapse-item/index",
     "van-icon": "@vant/weapp/icon/index",
     "van-button": "@vant/weapp/button/index",
     "van-dialog": "@vant/weapp/dialog/index"
   },
-  "navigationBarTitleText": "福利"
+  "navigationBarTitleText": "福利",
+  "navigationBarBackgroundColor": "#efefef"
 }

@@ -1,15 +1,15 @@
-<van-tabs sticky active="{{ active }}" bind:change="onChange">
-  <!-- 消费记录 -->
+<van-tabs sticky animated swipeable active="{{ active }}" bind:change="onChange">
+  <!-- 充值规则 -->
   <van-tab title="充值规则">
     <van-cell-group>
       <van-empty description="开发中" />
     </van-cell-group>
   </van-tab>
-  <!-- 充值记录 -->
+  <!-- 会员服务协议 -->
   <van-tab title="会员服务协议">
     <van-cell-group>
-      <view class="tetx_warp">
-        <view>VIP会员服务协议</view>
+      <view class="text_warp">
+        <view class="text_title">VIP会员服务协议</view>
         <view>1.服务条款的接受与修改</view>
         <view class="text_indent">1.1 本协议是指会员使用本平台提供的会员服务（下称“本服务”）所订立的协议（下称“本协议”）。本协议描述本平台与会员之间关于本服务的使用以及相关方面的权利义务。“会员”或“您”是指完成了成为本平台会员的所有程序（即支付会员费用、同意本协议全部内容），且在遵守本平台相关规则下使用本平台提供的会员服务的自然人用户（简称“您”）。</view>
         <view class="text_indent">1.2 本协议构成您使用本平台所提供的本服务之先决条件，本平台已经以字体加粗或其他合理方式提示您重点阅读协议中相关免除或限制责任条款，双方确认前述条款不属于《民法典》规定的“免除其责任、加重对方责任、排除对方主要权利”条款，您和本平台均认可其合法性及有效性。除非您接受本协议条款，否则您无权使用本服务，您选择使用本服务行为将视为同意接受本协议各项条款及其后续修订条款的约束。</view>
@@ -26,4 +26,3 @@
     </van-cell-group>
   </van-tab>
 </van-tabs>
-<view style="height: 20px;"></view>

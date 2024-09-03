@@ -1,9 +1,8 @@
-/* 最外层容器样式 */
-#warp {
-  padding: 0 20px;
+page {
+  /* padding-bottom: calc(env(safe-area-inset-bottom) + 24rpx + 50px); */
+  padding: 0 10px;
 }
 
-/* 搜索栏样式 */
 .van-search {
   padding: 0 !important;
 }
@@ -14,64 +13,70 @@
   background: #fff !important;
 }
 
-/* 轮播图--容器宽度样式 */
+/* 轮播图*/
 swiper {
   height: 140px;
   padding: 20px 0;
 }
 
-/* 轮播图--图片样式 */
 swiper image {
   width: 100%;
   height: 100%;
   border-radius: 8px;
 }
 
-/* 排行福利Vip--容器宽度样式 */
-.icon-container {
+/* 排行福利Vip*/
+.custom-icon-warp {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #efefef;
+  /* text-align: center; */
   display: flex;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: center;
+  background: #efefef;
+  border-radius: 12px;
 }
 
-/* 排行福利Vip--图标文字样式 */
-.iconWarp {
+.custom-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.custom-title {
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 22px;
+}
+
+/* 精选好剧 */
+.jing-xuan-title {
   display: flex;
-  flex-direction: column;
   align-items: center;
 }
 
-/* 精选好剧--标题样式 */
-.jing-xuan-container {
-  padding: 20px 0;
+.van-cell-img {
+  width: 20px;
+  height: 20px;
 }
 
-/* 精选好剧--外部容器样式 */
-.jing-xuan-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+.van-cell-text {
+  font-weight: bold;
+  font-size: 16px;
+  margin-left: 4px;
 }
 
-.jing-xuan-list:after{
-  content: "";
-  flex: auto;
-}
-
-/* 精选好剧--单个卡片样式 */
-.jing-xuan-item {
-  width: 30%;
-  margin: 8px 0;
-}
-
-/* 精选好剧--单个卡片-图片样式 */
-.jing-xuan-item image{
+.jing-xuan-img {
   width: 100%;
-  height: 150px;
+  height: 180px;
   border-radius: 6px;
 }
 
-/* 精选好剧--单个卡片-剧名样式 */
-.jing-xuan-desc .desc{
+.jing-xuan-desc {
+  width: 100%;
+}
+
+.jing-xuan-desc .desc {
   font-size: 14px;
   color: #000;
   overflow: hidden;
@@ -79,8 +84,7 @@ swiper image {
   text-overflow: ellipsis;
 }
 
-/* 精选好剧--单个卡片-播放数量样式 */
-.jing-xuan-desc .num{
+.jing-xuan-desc .num {
   font-size: 10px;
   color: rgb(153, 150, 150);
 }

@@ -1,5 +1,5 @@
 // 引用的utils/playerManager.js的代码
-const PlayerManager = require('../../utils/playerManager').default
+var PlayerManager = require('../../utils/playerManager')
 Page({
 
   /**
@@ -38,18 +38,20 @@ Page({
     if (!this.data.value) {
       return wx.showToast({
         title: '请先输入关键词',
+        icon: "none"
       })
     } else {
       wx.showToast({
         title: this.data.value,
+        icon: "none"
       })
     }
   },
   // 点击跳转播放器
   goPlayVideo() {
     PlayerManager.navigateToPlayer({
-      srcAppid: 'wx1234567890123456', // 剧目提审方 appid
-      dramaId: '100001', // 小程序管理后台的媒资管理上传的剧目的 dramaId
+      srcAppid: 'wx8fe8a8ed30593822', // 剧目提审方 appid
+      dramaId: '100740', // 小程序管理后台的媒资管理上传的剧目的 dramaId
       serialNo: '1', // 剧目中的某一集
       extParam: encodeURIComponent('a=b&c=d'), // 扩展字段,需要encode
     })

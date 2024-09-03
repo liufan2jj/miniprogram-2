@@ -1,5 +1,7 @@
 {
   "component": true,
   "styleIsolation": "isolated",
-  "usingComponents": {}
+  "usingComponents": {
+    "custom-tab-bar": "../../custom-tab-bar/index"
+  }
 }

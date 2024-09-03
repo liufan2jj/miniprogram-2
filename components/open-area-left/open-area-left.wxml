@@ -1,21 +1,21 @@
 <view class="open-area-left">
   <scroll-view scroll-y style="height:100%;">
-    <mp-cells ext-class="my-cells" title="充值弹窗">
-      <mp-cell bind:tap="onChargeTransparent" value="设置透明背景"></mp-cell>
-      <mp-cell bind:tap="onChargeWhiteBg" value="设置白色背景"></mp-cell>
-      <mp-cell bind:tap="onChargeHeight" value="设置最大高度"></mp-cell>
-    </mp-cells>
-    <mp-cells ext-class="my-cells" title="播放控制">
-      <mp-cell bind:tap="onPause" value="暂停"></mp-cell>
-      <mp-cell bind:tap="onPlay" value="继续播放"></mp-cell>
-    </mp-cells>
-    <mp-cells ext-class="my-cells" title="其它接口">
-      <mp-cell bind:tap="onChangeDrama" value="更换剧集"></mp-cell>
-      <mp-cell bind:tap="onToggleShare" value="显示或隐藏分享"></mp-cell>
-      <mp-cell bind:tap="onToggleRight" value="显示或隐藏右侧"></mp-cell>
-    </mp-cells>
-    <mp-cells ext-class="my-cells" title="">
-      <mp-cell bind:tap="onClose" value="关闭"></mp-cell>
-    </mp-cells>
+    <view>
+      <view bind:tap="onChargeTransparent">设置透明背景</view>
+      <view bind:tap="onChargeWhiteBg">设置白色背景</view>
+      <view bind:tap="onChargeHeight">设置最大高度</view>
+    </view>
+    <view>
+      <view bind:tap="onPause">暂停</view>
+      <view bind:tap="onPlay">继续播放</view>
+    </view>
+    <view>
+      <view bind:tap="onChangeDrama">更换剧集</view>
+      <view bind:tap="onToggleShare">显示或隐藏分享</view>
+      <view bind:tap="onToggleRight">显示或隐藏右侧</view>
+    </view>
+    <view>
+      <view bind:tap="onClose">关闭</view>
+    </view>
   </scroll-view>
 </view>

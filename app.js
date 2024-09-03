@@ -1,11 +1,11 @@
-// app.js
 import request from './utils/loginInfo'
-import PlayerManager from './utils/playerManager'
+var PlayerManager = require('./utils/playerManager')
 const playletPlugin = requirePlugin('playlet-plugin')
 App({
   playerManagerList: [],
   onLaunch(options) {
     playletPlugin.onPageLoad(this._onPlayerLoad.bind(this))
+    // 登录接口
     wx.login({
       async success(res) {
         if (res.code) {

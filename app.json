@@ -13,7 +13,6 @@
     "pages/recharge/recharge",
     "pages/member/member",
     "pages/transactionDetails/transactionDetails",
-    "pages/rechargeRecord/rechargeRecord",
     "pages/userAgreement/userAgreement"
   ],
   "subpackages": [
@@ -44,7 +43,9 @@
     "charge-dialog": "/components/charge-dialog/charge-dialog",
     "open-area-left": "/components/open-area-left/open-area-left",
     "open-area-left-side": "/components/open-area-left-side/open-area-left-side",
-    "open-area-right": "/components/open-area-right/open-area-right"
+    "open-area-right": "/components/open-area-right/open-area-right",
+    "custom-tab-bar": "/custom-tab-bar/index",
+    "playlet-share": "plugin://playlet-plugin/share"
   },
   "plugins": {
     "playlet-plugin": {
@@ -52,7 +53,11 @@
       "provider": "wx94a6522b1d640c3b",
       "genericsImplementation": {
         "playlet": {
-          "charge-dialog": "/components/charge-dialog/charge-dialog"
+          "charge-dialog": "/components/charge-dialog/charge-dialog",
+          "open-area-left": "/components/open-area-left/open-area-left",
+          "open-area-left-side": "/components/open-area-left-side/open-area-left-side",
+          "open-area-right": "/components/open-area-right/open-area-right",
+          "custom-tab-bar": "/custom-tab-bar/index"
         }
       }
     }
@@ -60,7 +65,7 @@
   "lazyCodeLoading": "requiredComponents",
   "tabBar": {
     "selectedColor": "#1296db",
-    "borderStyle": "black",
+    "borderStyle": "white",
     "list": [
       {
         "pagePath": "pages/bingeWatching/bingeWatching",
@@ -93,5 +98,8 @@
     "downloadFile": 10000
   },
   "debug": true,
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "useExtendedLib": {
+    "weui": true
+  }
 }

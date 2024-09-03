@@ -1,12 +1,11 @@
-<view id="warp">
-  <view class="search_warp">
-    <view class="search_list">
-      <view class="search_item" wx:for="{{list}}" wx:key="index">
-        <view class="search_tips" wx:if="{{index<=2}}">{{index+1}}</view>
-        <image mode="scaleToFill" src="{{item.img}}" bindtap="goPlayVideo"></image>
-        <view class="search_desc">{{item.desc}}</view>
+<van-grid column-num="2" border="{{ false }}">
+  <van-grid-item use-slot wx:for="{{list}}" wx:key="index">
+    <view class="jing-xuan_item">
+      <view class="jing-xuan_tips" wx:if="{{index<=2}}">{{index+1}}</view>
+      <image class="jing-xuan-img" src="{{item.img}}" bindtap="goPlayVideo"></image>
+      <view class="jing-xuan-desc">
+        <view class="desc">{{item.desc}}</view>
       </view>
     </view>
-  </view>
-  <view style="height: 20px;"></view>
-</view>
+  </van-grid-item>
+</van-grid>
