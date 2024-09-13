@@ -1,63 +1,41 @@
 // 引用的utils/playerManager.js的代码
 var PlayerManager = require('../../utils/playerManager')
-
+import {
+  theatreInfo,
+  selectDramaChoiceList
+} from '../../api/index.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    imgList: ['https://img-blog.csdnimg.cn/5589ae9720df44fda0967faaa288a553.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBALeW4jOWGgC0=,size_20,color_FFFFFF,t_70,g_se,x_16', 'https://img-blog.csdnimg.cn/5580029c6bed471487fe93983088cbae.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBALeW4jOWGgC0=,size_20,color_FFFFFF,t_70,g_se,x_16', 'https://img-blog.csdnimg.cn/1472745c740d42caa002fb5b24b0069a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBALeW4jOWGgC0=,size_20,color_FFFFFF,t_70,g_se,x_16'],
     iconList: [{
         icon: "../../static/img/paihangbang.png",
         text: "排行"
       },
       {
-        icon: "../../static/img/fulizhongxin.png",
-        text: "福利"
+        icon: "../../static/img/qiandao.png",
+        text: "签到"
       },
       {
         icon: "../../static/img/huangguan.png",
         text: "VIP"
       }
     ],
-    jingXuanList: [{
-        img: 'https://img-blog.csdnimg.cn/1472745c740d42caa002fb5b24b0069a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBALeW4jOWGgC0=,size_20,color_FFFFFF,t_70,g_se,x_16',
-        desc: "wwwwwwwwwwwwwwww爆炸新闻",
-        num: "9999万 播放量"
-      },
-      {
-        img: 'https://img-blog.csdnimg.cn/1472745c740d42caa002fb5b24b0069a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBALeW4jOWGgC0=,size_20,color_FFFFFF,t_70,g_se,x_16',
-        desc: "wwwwwwwwwwwwwwww爆炸新闻",
-        num: "9999万播放量"
-      },
-      {
-        img: 'https://img-blog.csdnimg.cn/1472745c740d42caa002fb5b24b0069a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBALeW4jOWGgC0=,size_20,color_FFFFFF,t_70,g_se,x_16',
-        desc: "wwwwwwwwwwwwwwww爆炸新闻",
-        num: "9999万 播放量"
-      },
-      {
-        img: 'https://img-blog.csdnimg.cn/1472745c740d42caa002fb5b24b0069a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBALeW4jOWGgC0=,size_20,color_FFFFFF,t_70,g_se,x_16',
-        desc: "wwwwwwwwwwwwwwww爆炸新闻",
-        num: "9999万 播放量"
-      },
-      {
-        img: 'https://img-blog.csdnimg.cn/1472745c740d42caa002fb5b24b0069a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBALeW4jOWGgC0=,size_20,color_FFFFFF,t_70,g_se,x_16',
-        desc: "wwwwwwwwwwwwwwww爆炸新闻",
-        num: "9999万 播放量"
-      },
-      {
-        img: 'https://img-blog.csdnimg.cn/1472745c740d42caa002fb5b24b0069a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBALeW4jOWGgC0=,size_20,color_FFFFFF,t_70,g_se,x_16',
-        desc: "wwwwwwwwwwwwwwww爆炸新闻",
-        num: "9999万 播放量"
-      },
-    ],
+    jingXuanList: [],
+    imgList: [],
     indicatorDots: true,
     vertical: false,
     autoplay: true,
     interval: 2000,
     duration: 500,
     value: '',
+    loading: true, //骨架屏状态
+    pageNo: 2,
+    pageSize: 10,
+    noneMore: false,
+    loadingMore: true
   },
   // 搜索栏跳转搜索页
   goSearchPage() {
@@ -73,14 +51,14 @@ Page({
           url: '/pages/rankingList/rankingList',
         })
         break;
-      case "福利":
+      case "签到":
         wx.navigateTo({
-          url: '/pages/welfare/welfare',
+          url: '/pages/signPage/signPage',
         })
         break;
       case "VIP":
         wx.navigateTo({
-          url: '/pages/member/member',
+          url: '/pages/recharge/recharge',
         })
         break;
       default:
@@ -100,7 +78,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    this.initPageList()
   },
 
   /**
@@ -113,12 +91,89 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow() {
-    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
-      this.getTabBar().setData({
-        selected: 2
+  // 页面初始化接口
+  async initPageList() {
+    this.setData({
+      pageNo: 2
+    })
+    try {
+      const {
+        msg,
+        data: {
+          banner,
+          choice
+        },
+        code
+      } = await theatreInfo({
+        pageSize: this.data.pageSize
+      })
+      if (code === 200) {
+        this.setData({
+          imgList: banner,
+          jingXuanList: choice,
+        })
+      } else {
+        wx.showToast({
+          title: msg,
+          icon: "error"
+        })
+      }
+    } catch (error) {
+      wx.showToast({
+        title: error,
+        icon: "error"
+      })
+    } finally {
+      wx.stopPullDownRefresh()
+      this.setData({
+        loading: false,
       })
     }
+  },
+  // 分页接口
+  async getPageList() {
+    try {
+      const {
+        msg,
+        code,
+        data
+      } = await selectDramaChoiceList({
+        pageNo: this.data.pageNo,
+        pageSize: this.data.pageSize
+      })
+      if (code === 200) {
+        if (data && data.length <= 0) {
+          this.setData({
+            noneMore: !this.data.noneMore,
+            loadingMore: !this.data.loadingMore
+          })
+        } else {
+          this.setData({
+            jingXuanList: this.data.jingXuanList.concat(data),
+            pageNo: ++this.data.pageNo
+          })
+        }
+      } else {
+        wx.showToast({
+          title: msg,
+          icon: "error"
+        })
+      }
+    } catch (error) {
+      wx.showToast({
+        title: error,
+        icon: "error"
+      })
+    } finally {
+      wx.stopPullDownRefresh()
+    }
+  },
+  onShow() {
+    // if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+    //   this.getTabBar().setData({
+    //     selected: 2
+    //   })
+    // }
   },
 
   /**
@@ -139,14 +194,15 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh() {
-
+    console.log(this.data.pageNo)
+    this.initPageList()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
-
+    this.getPageList()
   },
 
   /**

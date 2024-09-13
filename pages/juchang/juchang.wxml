@@ -1,39 +1,44 @@
-<!-- 搜索栏 -->
-<view capture-catch:touchstart="goSearchPage">
-  <van-search value="{{ value }}" placeholder="请输入搜索关键词" />
-</view>
-<!-- 轮播图 -->
-<swiper interval="5000" indicator-dots="true" autoplay="true" circular="true">
-  <swiper-item wx:for="{{imgList}}" wx:key="index">
-    <image mode="scaleToFill" src="{{item}}" bindtap="goPlayVideo"></image>
-  </swiper-item>
-</swiper>
-<!-- 排行，福利，Vip -->
-<van-grid column-num="3" border="{{ false }}">
-  <van-grid-item use-slot wx:for="{{iconList}}" wx:key="index" data-type="{{item.text}}" bind:click="goClassification">
-    <view class="custom-icon-warp">
-      <image class="custom-icon" src="{{item.icon}}" />
-    </view>
-    <text class="custom-title">{{item.text}}</text>
-  </van-grid-item>
-</van-grid>
-<!-- 精选好剧 -->
-<view>
-  <van-cell border="{{false}}">
-    <view class="jing-xuan-title" slot="title">
-      <image class="van-cell-img" src="../../static/img/huaban.png" />
-      <view class="van-cell-text">精选好剧</view>
-    </view>
-  </van-cell>
+<van-skeleton title avatar row="8" loading="{{ loading }}">
+  <!-- 搜索栏 -->
+  <view capture-catch:touchstart="goSearchPage">
+    <van-search value="{{ value }}" placeholder="请输入搜索关键词" />
+  </view>
+  <!-- 轮播图 -->
+  <view class="swiper_warp">
+    <swiper interval="5000" indicator-dots="true" autoplay="true" circular="true">
+      <swiper-item wx:for="{{imgList}}" wx:key="index">
+        <image mode="scaleToFill" src="{{item.banner_img}}" bindtap="goPlayVideo"></image>
+      </swiper-item>
+    </swiper>
+  </view>
+  <!-- 排行，签到，Vip -->
   <van-grid column-num="3" border="{{ false }}">
-    <van-grid-item use-slot wx:for="{{jingXuanList}}" wx:key="index">
-      <image class="jing-xuan-img" src="{{item.img}}" bindtap="goPlayVideo"></image>
-      <view class="jing-xuan-desc">
-        <view class="desc">{{item.desc}}</view>
-        <view class="num">
-          <van-icon name="play-circle" />{{item.num}}
-        </view>
-      </view>
+    <van-grid-item use-slot wx:for="{{iconList}}" wx:key="index" data-type="{{item.text}}" bind:click="goClassification">
+      <image class="custom-icon" src="{{item.icon}}" />
+      <text class="custom-title">{{item.text}}</text>
     </van-grid-item>
   </van-grid>
-</view>
+  <!-- 精选好剧 -->
+  <view>
+    <van-cell border="{{false}}" is-link value="查看更多" >
+      <view class="jing-xuan-title" slot="title">
+        <view class="van-cell-text">
+          <image class="van-cell-img" src="../../static/img/tuijian.png" />精选好剧
+        </view>
+      </view>
+    </van-cell>
+    <van-grid column-num="3" border="{{ false }}">
+      <van-grid-item use-slot wx:for="{{jingXuanList}}" wx:key="index">
+        <image class="jing-xuan-img" src="{{item.cover_url}}" bindtap="goPlayVideo"></image>
+        <view class="jing-xuan-desc">
+          <view class="desc">{{item.name}}</view>
+          <view class="num">
+            {{item.views_count||'末日·77集'}}
+          </view>
+        </view>
+      </van-grid-item>
+    </van-grid>
+    <view wx:if="{{loadingMore&&jingXuanList.length>=10}}" class="loading_tips">滑动加载更多...</view>
+    <view wx:if="{{noneMore&&jingXuanList.length>=10}}" class="loading_tips">暂无更多数据...</view>
+  </view>
+</van-skeleton>

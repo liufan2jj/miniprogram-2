@@ -5,5 +5,9 @@
     "van-cell-group": "@vant/weapp/cell-group/index",
     "van-overlay": "@vant/weapp/overlay/index"
   },
-  "navigationBarTitleText": "个人中心"
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "个人中心",
+  "navigationBarTextStyle": "white",
+  "navigationBarBackgroundColor": "#F41919",
+  "backgroundColorTop": "#F41919"
 }

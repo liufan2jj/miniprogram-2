@@ -1,27 +1,18 @@
-// pages/rankingList/rankingList.js
+import {
+  selectDramaListBy
+} from '../../api/index.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list: [{
-        img: 'https://img-blog.csdnimg.cn/1472745c740d42caa002fb5b24b0069a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBALeW4jOWGgC0=,size_20,color_FFFFFF,t_70,g_se,x_16',
-        desc: "爆炸新闻",
-      },
-      {
-        img: 'https://img-blog.csdnimg.cn/1472745c740d42caa002fb5b24b0069a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBALeW4jOWGgC0=,size_20,color_FFFFFF,t_70,g_se,x_16',
-        desc: "爆炸新闻",
-      },
-      {
-        img: 'https://img-blog.csdnimg.cn/1472745c740d42caa002fb5b24b0069a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBALeW4jOWGgC0=,size_20,color_FFFFFF,t_70,g_se,x_16',
-        desc: "爆炸新闻",
-      },
-      {
-        img: 'https://img-blog.csdnimg.cn/1472745c740d42caa002fb5b24b0069a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBALeW4jOWGgC0=,size_20,color_FFFFFF,t_70,g_se,x_16',
-        desc: "爆炸新闻",
-      },
-    ],
+    list: [],
+    pageNo: 1,
+    pageSize: 10,
+    noneMore: false,
+    loadingMore: true,
+    loading: true, //骨架屏状态
   },
 
   /**
@@ -38,11 +29,50 @@ Page({
 
   },
 
+  async initPageList() {
+    try {
+      const {
+        code,
+        msg,
+        data
+      } = await selectDramaListBy({
+        pageNo: this.data.pageNo,
+        pageSize: this.data.pageSize
+      })
+      if (code === 200) {
+        if (data && data.length <= 0) {
+          this.setData({
+            noneMore: !this.data.noneMore,
+            loadingMore: !this.data.loadingMore
+          })
+        } else {
+          this.setData({
+            list: this.data.list.concat(data),
+            pageNo: ++this.data.pageNo
+          })
+        }
+      } else {
+        wx.showToast({
+          title: msg,
+          icon: "error"
+        })
+      }
+    } catch (error) {
+      wx.showToast({
+        title: error,
+        icon:"error"
+      })
+    } finally {
+      this.setData({
+        loading: false,
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    this.initPageList()
   },
 
   /**
@@ -70,7 +100,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom() {
-
+    this.initPageList()
   },
 
   /**

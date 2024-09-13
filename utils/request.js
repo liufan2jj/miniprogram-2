@@ -77,12 +77,13 @@ newHttp.interceptor.response = response => {
         if (responseToken && responseTokenExpire) {
           // 设置token缓存
           wx.setStorageSync('token', responseToken);
+
           // 当前时间
-          var timestamp = Date.parse(new Date());
+          // var timestamp = Date.parse(new Date()) / 1000;
           // 加上过期期限
-          var expiration = timestamp + responseTokenExpire;
+          // var expiration = timestamp + Number(responseTokenExpire);
           // 存入缓存
-          wx.setStorageSync('data_expiration', expiration);
+          wx.setStorageSync('data_expiration', responseTokenExpire);
         }
         return response.data
         break;

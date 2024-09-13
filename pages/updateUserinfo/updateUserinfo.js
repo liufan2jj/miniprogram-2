@@ -8,7 +8,7 @@ Page({
    */
   data: {
     avatarUrl: "",
-    value: "",
+    name: "",
     userInfo: {}
   },
   /**
@@ -21,7 +21,6 @@ Page({
     this.setData({
       avatarUrl,
     })
-    this.data.avatar_url = avatarUrl;
   },
   getUserProfile: function () {
     wx.getUserProfile({
@@ -36,30 +35,13 @@ Page({
   },
   submitUserInfo: async function () {
     try {
-      let {
-        id = "",
-          nickname = this.data.value,
-          avatar_url = this.data.avatarUrl,
-          gender = "",
-          language = "",
-          city = "",
-          province = "",
-          country = ""
-      } = this.data.userInfo
+      this.data.userInfo.nickname = this.data.name
+      this.data.userInfo.avatar_url = this.data.avatarUrl
       const {
         code,
         msg,
         data
-      } = await upateUserInfo({
-        id,
-        nickname,
-        avatar_url,
-        gender,
-        language,
-        city,
-        province,
-        country
-      })
+      } = await upateUserInfo(this.data.userInfo)
       if (code === 200) {
         wx.showToast({
           title: '更新成功',
@@ -68,7 +50,7 @@ Page({
         wx.setStorageSync('userInfo', data);
         this.setData({
           avatarUrl: data.avatar_url || '',
-          value: data.nickname || '',
+          name: data.nickname || '',
         })
       } else {
         wx.showToast({
@@ -100,7 +82,7 @@ Page({
     if (this.data.userInfo) {
       this.setData({
         avatarUrl: this.data.userInfo.avatar_url || '',
-        value: this.data.userInfo.nickname || '',
+        name: this.data.userInfo.nickname || '',
         userInfo: this.data.userInfo
       })
     }

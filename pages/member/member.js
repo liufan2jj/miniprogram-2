@@ -1,11 +1,14 @@
-// pages/member/member.js
+import {
+  prePayVip,
+  selectRechargeProjectList
+} from '../../api/index.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    current: 2,
+    current: -1,
     userInfo: {},
     avatarUrl: "",
     id: "",
@@ -75,11 +78,56 @@ Page({
     })
     console.log(index, this.data.current, original_price, mon)
   },
+  // 开通会员按钮
+  async openMembership() {
+    const selectIndex = this.data.current
+    if (selectIndex < 0) {
+      wx.showToast({
+        icon: 'none',
+        title: '请选择一个充值方案'
+      })
+      return
+    }
+    console.log('onSelectChargeItem index', selectIndex)
+    const item = this.data.chargeList[selectIndex]
+    const {
+      msg,
+      code,
+      data
+    } = await prePayVip({
+      id: 1
+    })
+    wx.requestPayment({
+      timeStamp: data.timeStamp,
+      nonceStr: data.nonceStr,
+      package: data.package_,
+      signType: data.signType,
+      paySign: data.paySign,
+      success(res) {
+        console.log(res)
+      },
+      fail(res) {
+        console.log(res)
+      }
+    })
+    // console.log(msg, code, data)
+    // wx.showToast({
+    //   icon: 'none',
+    //   title: '您选择了' + item.mon + '会员'
+    // })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
+  async onLoad(options) {
+    const {
+      msg,
+      code,
+      data
+    } = await selectRechargeProjectList({
 
+    })
+    console.log(msg, code, data)
   },
 
   /**

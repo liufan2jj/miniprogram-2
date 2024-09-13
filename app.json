@@ -1,11 +1,10 @@
 {
   "pages": [
+    "pages/welfare/welfare",
     "pages/bingeWatching/bingeWatching",
-    "pages/tuijian/tuijian",
     "pages/juchang/juchang",
     "pages/wode/wode",
-    "pages/details/details",
-    "pages/welfare/welfare",
+    "pages/signPage/signPage",
     "components/charge-dialog/charge-dialog",
     "pages/updateUserinfo/updateUserinfo",
     "pages/searchPage/searchPage",
@@ -13,7 +12,9 @@
     "pages/recharge/recharge",
     "pages/member/member",
     "pages/transactionDetails/transactionDetails",
-    "pages/userAgreement/userAgreement"
+    "pages/userAgreement/userAgreement",
+    "pages/setPage/setPage",
+    "pages/cardPage/cardPage"
   ],
   "subpackages": [
     {
@@ -37,7 +38,9 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "Weixin",
     "navigationBarTextStyle": "black",
-    "enablePullDownRefresh": false
+    "enablePullDownRefresh": false,
+    "backgroundColorTop": "#fff",
+    "backgroundColorBottom": "#fff"
   },
   "usingComponents": {
     "charge-dialog": "/components/charge-dialog/charge-dialog",
@@ -64,20 +67,20 @@
   },
   "lazyCodeLoading": "requiredComponents",
   "tabBar": {
-    "selectedColor": "#1296db",
+    "selectedColor": "#E82525",
     "borderStyle": "white",
     "list": [
+      {
+        "pagePath": "pages/welfare/welfare",
+        "text": "福利",
+        "iconPath": "./static/img/fuli.png",
+        "selectedIconPath": "./static/img/fuli_after.png"
+      },
       {
         "pagePath": "pages/bingeWatching/bingeWatching",
         "text": "追剧",
         "iconPath": "./static/img/zhuiju.png",
         "selectedIconPath": "./static/img/zhuiju_after.png"
-      },
-      {
-        "pagePath": "pages/tuijian/tuijian",
-        "text": "推荐",
-        "iconPath": "./static/img/tuijian.png",
-        "selectedIconPath": "./static/img/tuijian_after.png"
       },
       {
         "pagePath": "pages/juchang/juchang",

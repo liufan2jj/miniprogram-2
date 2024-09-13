@@ -1,5 +1,7 @@
 var plugin = requirePlugin("playlet-plugin");
-
+import {
+  userCenter
+} from '../../api/login.js'
 Component({
   options: {
     multipleSlots: true // 在组件定义时的选项中启用多slot支持
@@ -37,6 +39,7 @@ Component({
     chargeList: [],
     selectIndex: -1,
     current: -1,
+    total:0
   },
   lifetimes: {
     attached() {
@@ -46,6 +49,8 @@ Component({
   observers: {
     serialNo(serialNo) {
       // 当集数发生改变的时候，触发此函数
+      console.log(serialNo)
+      this.onShowChargeDialog()
     },
     playerId(playerId) {
       console.log('this.initChargeDialog', playerId)
@@ -68,6 +73,8 @@ Component({
         pm.onShowChargeDialog(this.onShowChargeDialog.bind(this))
         // 注册弹窗隐藏事件
         pm.onHideChargeDialog(this.onHideChargeDialog.bind(this))
+        // 注册点击按钮拉起激励广告事件
+        pm.onUseAdUnlock(this.onUseAdUnlock.bind(this))
       }
     },
     getPlayerManager() {
@@ -78,17 +85,6 @@ Component({
       pm.navigateTo({
         url: '/pages/member/member',
       })
-    },
-    // 充值选择
-    checkCharge(e) {
-      const {
-        index,
-        original_price,
-      } = e.currentTarget.dataset
-      this.setData({
-        current: index
-      })
-      console.log(index, this.data.current, original_price)
     },
     // 充值规则
     gochargeRule() {
@@ -106,6 +102,8 @@ Component({
     },
     onShowChargeDialog() {
       console.log('onShowChargeDialog')
+      const pm = this.getPlayerManager()
+      pm.emitCustomEvent("toView", '200')
       // 根据已有的参数初始化下弹窗
       this.setData({
         chargeList: [{
@@ -116,33 +114,41 @@ Component({
           {
             discount: '特惠',
             original_price: "¥9.9",
-            discount_price: "200 + 送200"
+            discount_price: "990+送200"
           },
           {
             discount: '',
             original_price: "¥29.9",
-            discount_price: "2990 + 送1000"
-          },
-          {
-            discount: '热门',
-            original_price: "¥49.9",
-            discount_price: "4990 + 送2500"
+            discount_price: "2990+送1000"
           },
           {
             discount: '',
-            original_price: "¥99.9",
-            discount_price: "9990 + 送5000"
+            original_price: "¥49.9",
+            discount_price: "4990+送2500"
           },
           {
-            discount: '性价比',
-            original_price: "¥300",
-            discount_price: "30000 + 送20000"
+            discount: '会员1天',
+            original_price: "¥19.9",
+            discount_price: "解锁观看全站1天"
           },
-        ]
+          {
+            discount: '会员2天',
+            original_price: "¥30",
+            discount_price: "解锁观看全站2天"
+          },
+        ],
       })
     },
     onHideChargeDialog() {
       console.log('onHideChargeDialog')
+    },
+    onClose() {
+      const pm = this.getPlayerManager()
+      pm.hideChargeDialog()
+    },
+    onUseAdUnlock() {
+      console.log('>>>USE_AD_UNLOCK')
+      // 拉起激励视频广告去解锁
     },
     onSelectChargeItem(e) {
       const {
@@ -153,12 +159,51 @@ Component({
         selectIndex: index
       })
     },
-    onClose() {
-      const pm = this.getPlayerManager()
-      pm.hideChargeDialog()
+    // 初始化用户信息
+    async initUserinfo() {
+      try {
+        const {
+          msg,
+          code,
+          data
+        } = await userCenter({})
+        if (code === 200) {
+          if (data) {
+            const storageUseInfo = wx.getStorageSync('userInfo')
+            const newData = {
+              ...storageUseInfo,
+              data
+            }
+            this.setData({
+              total: data.view_point
+            })
+            wx.setStorageSync('userInfo', newData);
+          }
+        } else {
+          wx.showToast({
+            title: msg,
+            icon: "error"
+          })
+        }
+      } catch (error) {
+        wx.showToast({
+          title: error,
+          icon: 'error'
+        })
+      }
     },
-    onCharge(e) {
-      const selectIndex = this.data.selectIndex
+    // 充值选择
+    checkCharge(e) {
+      const {
+        index,
+        original_price,
+      } = e.currentTarget.dataset
+      this.setData({
+        current: index
+      })
+      console.log(index, this.data.current, original_price)
+      const selectIndex = this.data.current
+      const item = this.data.chargeList[selectIndex]
       if (selectIndex < 0) {
         wx.showToast({
           icon: 'none',
@@ -166,8 +211,12 @@ Component({
         })
         return
       }
-      console.log('onSelectChargeItem index', index)
-      const item = this.data.chargeList[index]
+      wx.showToast({
+        icon: 'none',
+        title: '您选充值了' + item.original_price
+      })
+    },
+    onCharge() {
       const pm = this.getPlayerManager()
       const {
         serialNo,

@@ -1,9 +1,10 @@
 {
   "usingComponents": {
-    "van-icon": "@vant/weapp/icon/index",
-    "van-button": "@vant/weapp/button/index",
-    "van-dialog": "@vant/weapp/dialog/index"
+    "van-skeleton": "@vant/weapp/skeleton/index",
+    "van-transition": "@vant/weapp/transition/index",
+    "van-loading": "@vant/weapp/loading/index",
+    "van-progress": "@vant/weapp/progress/index",
+    "van-button": "@vant/weapp/button/index"
   },
-  "navigationBarTitleText": "福利",
-  "navigationBarBackgroundColor": "#efefef"
+  "navigationBarTitleText": "福利"
 }

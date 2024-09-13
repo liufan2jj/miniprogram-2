@@ -1,4 +1,10 @@
-// pages/recharge/recharge.js
+import {
+  prePayVip,
+  selectRechargeProjectList
+} from '../../api/index.js'
+import {
+  userCenter
+} from '../../api/login.js'
 Page({
 
   /**
@@ -6,6 +12,9 @@ Page({
    */
   data: {
     current: -1,
+    checked: false,
+    total: 0,
+    balance: 0,
     chargeList: [{
         discount: '',
         original_price: "¥2",
@@ -14,27 +23,27 @@ Page({
       {
         discount: '特惠',
         original_price: "¥9.9",
-        discount_price: "200 + 送200"
+        discount_price: "990+送200"
       },
       {
         discount: '',
         original_price: "¥29.9",
-        discount_price: "2990 + 送1000"
-      },
-      {
-        discount: '热门',
-        original_price: "¥49.9",
-        discount_price: "4990 + 送2500"
+        discount_price: "2990+送1000"
       },
       {
         discount: '',
-        original_price: "¥99.9",
-        discount_price: "9990 + 送5000"
+        original_price: "¥49.9",
+        discount_price: "4990+送2500"
       },
       {
-        discount: '性价比',
-        original_price: "¥300",
-        discount_price: "30000 + 送20000"
+        discount: '会员1天',
+        original_price: "¥19.9",
+        discount_price: "解锁观看全站1天"
+      },
+      {
+        discount: '会员2天',
+        original_price: "¥30",
+        discount_price: "解锁观看全站2天"
       },
     ],
   },
@@ -52,7 +61,60 @@ Page({
     this.setData({
       current: index
     })
-    console.log(index, this.data.current, original_price)
+    this.setData({
+      total: original_price
+    })
+  },
+  onChange(event) {
+    this.setData({
+      checked: event.detail,
+    });
+  },
+  // 充值按钮
+  async openMembership() {
+    const selectIndex = this.data.current
+    if (selectIndex < 0) {
+      wx.showToast({
+        icon: 'none',
+        title: '请选择一个充值方案'
+      })
+      return
+    }
+    const item = this.data.chargeList[selectIndex]
+    wx.showToast({
+      icon: 'none',
+      title: '您选充值' + item.original_price
+    })
+    const {
+      msg,
+      code,
+      data
+    } = await prePayVip({
+      id: 1
+    })
+    if (data) {
+      wx.requestPayment({
+        timeStamp: data.timeStamp,
+        nonceStr: data.nonceStr,
+        package: data.package_,
+        signType: data.signType,
+        paySign: data.paySign,
+        success(res) {
+          console.log(res)
+        },
+        fail(res) {
+          wx.showToast({
+            title: '您取消了支付',
+            icon: 'none'
+          })
+        }
+      })
+    } else {
+      wx.showToast({
+        title: '支付参数获取异常',
+        icon: "error"
+      })
+    }
   },
   // 充值规则
   gochargeRule() {
@@ -69,8 +131,15 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
+  async onLoad(options) {
+    const {
+      msg,
+      code,
+      data
+    } = await selectRechargeProjectList({
 
+    })
+    console.log(msg, code, data)
   },
 
   /**
@@ -79,12 +148,44 @@ Page({
   onReady() {
 
   },
-
+  // 初始化用户信息
+  async initUserinfo() {
+    try {
+      const {
+        msg,
+        code,
+        data
+      } = await userCenter({})
+      if (code === 200) {
+        if (data) {
+          const storageUseInfo = wx.getStorageSync('userInfo')
+          const newData = {
+            ...storageUseInfo,
+            data
+          }
+          this.setData({
+            balance: data.view_point
+          })
+          wx.setStorageSync('userInfo', newData);
+        }
+      } else {
+        wx.showToast({
+          title: msg,
+          icon: "error"
+        })
+      }
+    } catch (error) {
+      wx.showToast({
+        title: error,
+        icon: 'error'
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    this.initUserinfo()
   },
 
   /**

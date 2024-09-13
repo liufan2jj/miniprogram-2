@@ -69,14 +69,19 @@ const proto = {
     pm.setActivityInfo({
       url: ''
     })
-
+    // 自定义事件
+    pm.onCustomEvent("toView", (data) => {
+      console.log(data);
+    })
     // 设置运营区域
     pm.updateOpenArea({
       showLeft: false,
       showRight: false,
       leftsideAreaList: [{
-        left: 0, // 类似绝对定位的样式
-        top: -48,
+        left: 16, // 类似绝对定位的样式
+        top: 20,
+        width: 72,
+        height: 32
       }, ],
       ext: 'extInfo',
     })

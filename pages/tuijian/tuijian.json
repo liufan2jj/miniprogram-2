@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "van-skeleton": "@vant/weapp/skeleton/index"
-  },
-  "navigationBarTitleText": "推荐"
-}

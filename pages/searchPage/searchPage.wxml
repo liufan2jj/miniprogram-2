@@ -1,26 +1,28 @@
 <!-- 搜索栏 -->
 <van-search value="{{ value }}" focus="{{true}}" placeholder="请输入搜索关键词" use-action-slot bind:change="onChange" bind:search="onSearch">
-  <view slot="action">
+  <!-- <view slot="action">
     <van-button bind:tap="onClick" round size="small" type="info">搜索</van-button>
-  </view>
+  </view> -->
 </van-search>
 <!-- 搜索列表 -->
 <view class="search_warp">
   <van-cell border="{{false}}">
     <view class="jing-xuan-title" slot="title">
-      <!-- <image class="van-cell-img" src="../../static/img/juchang.png" /> -->
-      <view class="van-cell-text">热剧推荐</view>
+      <view class="van-cell-text">热剧推荐
+        <image class="van-cell-img" src="../../static/img/remenhot.png" />
+      </view>
     </view>
   </van-cell>
-  <van-grid column-num="2" border="{{ false }}">
+  <van-grid wx:if="{{list.length>0}}" column-num="2" border="{{ false }}">
     <van-grid-item use-slot wx:for="{{list}}" wx:key="index">
       <view class="jing-xuan_item">
         <view class="jing-xuan_tips" wx:if="{{index<=2}}">{{index+1}}</view>
-        <image class="jing-xuan-img" src="{{item.img}}" bindtap="goPlayVideo"></image>
+        <image class="jing-xuan-img" src="{{item.cover_url}}" bindtap="goPlayVideo"></image>
         <view class="jing-xuan-desc">
-          <view class="desc">{{item.desc}}</view>
+          <view class="desc">{{item.name}}</view>
         </view>
       </view>
     </van-grid-item>
   </van-grid>
+  <van-empty wx:else class="custom-image" image="https://img.yzcdn.cn/vant/custom-empty-image.png" description="空空如也" />
 </view>

@@ -5,7 +5,12 @@
     "van-grid": "@vant/weapp/grid/index",
     "van-grid-item": "@vant/weapp/grid-item/index",
     "van-cell": "@vant/weapp/cell/index",
-    "van-cell-group": "@vant/weapp/cell-group/index"
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-skeleton": "@vant/weapp/skeleton/index"
   },
-  "navigationBarTitleText": "剧场"
+  "navigationBarTitleText": "剧场",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true,
+  "navigationBarBackgroundColor": "#F41919",
+  "backgroundColorTop": "#F41919"
 }

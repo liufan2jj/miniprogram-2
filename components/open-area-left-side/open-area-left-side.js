@@ -37,21 +37,21 @@ Component({
   },
   lifetimes: {
     attached() {
-      if (getCurrentPages()[0].route != "pages/tuijian/tuijian") {
-        this.setData({
-          pageShow: false
-        })
-      } else {
-        this.setData({
-          pageShow: true
-        })
-      }
+      // if (getCurrentPages()[0].route != "pages/tuijian/tuijian") {
+      //   this.setData({
+      //     pageShow: false
+      //   })
+      // } else {
+      //   this.setData({
+      //     pageShow: true
+      //   })
+      // }
     }
   },
   observers: {
-    pageShow() {
-      this.goBack()
-    }
+    // pageShow() {
+    //   this.goBack()
+    // }
   },
   /**
    * 组件的方法列表
@@ -64,16 +64,16 @@ Component({
         leftsideAreaList: []
       })
     },
-    goBack() {
-      const pm = this.getPlayerManager()
-      if (getCurrentPages()[0].route == "pages/tuijian/tuijian") {
-        pm.onBack(function () {
-          pm.switchTab({
-            url: '/pages/juchang/juchang',
-          })
-        })
-      }
-    },
+    // goBack() {
+    //   const pm = this.getPlayerManager()
+    //   if (getCurrentPages()[0].route == "pages/tuijian/tuijian") {
+    //     pm.onBack(function () {
+    //       pm.switchTab({
+    //         url: '/pages/juchang/juchang',
+    //       })
+    //     })
+    //   }
+    // },
     getPlayerManager() {
       return plugin.PlayletManager.getPageManager(this.data.playerId)
     },

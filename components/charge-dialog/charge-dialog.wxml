@@ -1,35 +1,33 @@
 <view class="charge-dialog">
-  <van-cell border="{{false}}">
-    <view class="jing-xuan-title" slot="title">
-      <!-- <image class="van-cell-img" src="../../static/img/juchang.png" /> -->
-      <view class="van-cell-text">充值后可购买剧集</view>
-    </view>
-  </van-cell>
+  <view class="jing-xuan-title" slot="title">
+    <!-- <image class="van-cell-img" src="../../static/img/juchang.png" /> -->
+    <view class="van-cell-text">充值后可购买剧集</view>
+  </view>
   <!-- 余额 -->
   <view class="xx_warp">
-    <text class="xx_title">我的金币：</text><text class="xx_num">200</text>
+    解锁本集消耗200金币丨余额：<text style="color: #E60505;">{{total}}</text>金币
   </view>
   <!-- banner插图 -->
-  <view class="banner_warp" bind:tap="gomemberPage">
-    <view class="banner_content">
-      <text class="banner_text">开通会员, </text><text class="banner_title">免费</text><text class="banner_text">看剧</text>
-    </view>
-    <image class="banner_img" src="../../static/img/iconvip01.png" />
+  <!-- <view class="banner_warp" bind:tap="gomemberPage">
+  <view class="banner_content">
+    <text class="banner_text">开通会员, </text><text class="banner_title">免费</text><text class="banner_text">看剧</text>
   </view>
+  <image class="banner_img" src="../../static/img/iconvip01.png" />
+</view> -->
   <view class="charge_title">
-    <van-icon name="chat-o" size="18px" color="#0fe263" /><text>点击对应金额进行微信充值</text>
+    点击对应金额进行微信充值
   </view>
   <!-- 充值列表 -->
   <van-grid column-num="3" border="{{ false }}">
     <van-grid-item use-slot wx:for="{{chargeList}}" wx:key="index" data-index="{{index}}" data-original_price="{{item.original_price}}" bind:click="checkCharge">
-      <view class="charge_item" style="border: 1px solid {{current===index?'#ec1d39':'#ccc'}};background: {{current===index?'#f7dde1':''}};">
+      <view class="charge_item" style="border: 2.78rpx solid {{current===index?'#A66507':'#B1B1B1'}};background: {{current===index?'radial-gradient( 0% 0% at 0% 0%, #FBD097 0%, #FCEACB 0%)':'#FFFFFF'}};">
         <text wx:if="{{item.discount}}" class="charge_item_discount">{{item.discount}}</text>
         <!-- <view class="charge_item_mon">{{item.mon}}</view> -->
         <view class="charge_item_Oprice">{{item.original_price}}</view>
         <view class="charge_item_Dprice">{{item.discount_price}}</view>
-        <view class="charge_item_checked" wx:if="{{current===index}}">
-          √
-        </view>
+        <!-- <view class="charge_item_checked" wx:if="{{current===index}}">
+        √
+      </view> -->
       </view>
     </van-grid-item>
   </van-grid>
@@ -40,6 +38,7 @@
     <view class="charge_tips">未满18岁的未成年人应在父母或其他监护人的陪同下进行相关付费操作。</view>
     <view class="charge_tips">请阅读并知悉 <text bind:tap="gochargeRule" class="charge_rule">《充值规则》</text>、<text bind:tap="gomemberAgreement" class="charge_rule">《会员服务协议》</text></view>
   </view>
+  <view class="bottomLock" bind:tap="onUseAdUnlock">观看广告，立即解锁></view>
 </view>
 
 

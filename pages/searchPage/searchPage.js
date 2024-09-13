@@ -1,5 +1,8 @@
 // 引用的utils/playerManager.js的代码
 var PlayerManager = require('../../utils/playerManager')
+import {
+  searchDramaList
+} from '../../api/index.js'
 Page({
 
   /**
@@ -7,23 +10,9 @@ Page({
    */
   data: {
     value: '',
-    list: [{
-        img: 'https://img-blog.csdnimg.cn/1472745c740d42caa002fb5b24b0069a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBALeW4jOWGgC0=,size_20,color_FFFFFF,t_70,g_se,x_16',
-        desc: "爆炸新闻",
-      },
-      {
-        img: 'https://img-blog.csdnimg.cn/1472745c740d42caa002fb5b24b0069a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBALeW4jOWGgC0=,size_20,color_FFFFFF,t_70,g_se,x_16',
-        desc: "爆炸新闻",
-      },
-      {
-        img: 'https://img-blog.csdnimg.cn/1472745c740d42caa002fb5b24b0069a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBALeW4jOWGgC0=,size_20,color_FFFFFF,t_70,g_se,x_16',
-        desc: "爆炸新闻",
-      },
-      {
-        img: 'https://img-blog.csdnimg.cn/1472745c740d42caa002fb5b24b0069a.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBALeW4jOWGgC0=,size_20,color_FFFFFF,t_70,g_se,x_16',
-        desc: "爆炸新闻",
-      },
-    ],
+    list: [],
+    pageNo: 1,
+    pageSize: 10,
   },
   onChange(e) {
     this.setData({
@@ -33,18 +22,47 @@ Page({
   onSearch() {
     console.log('sss')
   },
+  async searchPageList() {
+    const {
+      code,
+      data,
+      msg
+    } = await searchDramaList({
+      key: this.data.value,
+      pageNo: this.data.pageNo,
+      pageSize: this.data.pageSize
+    })
+    if (code === 200) {
+      if (data && data.length <= 0) {
+        this.setData({
+          noneMore: !this.data.noneMore,
+          loadingMore: !this.data.loadingMore
+        })
+      } else {
+        this.setData({
+          list: this.data.list.concat(data),
+          pageNo: ++this.data.pageNo
+        })
+      }
+    } else {
+      wx.showToast({
+        title: msg,
+        icon: "error"
+      })
+    }
+  },
   onClick() {
-    console.log(this.data.value)
     if (!this.data.value) {
       return wx.showToast({
         title: '请先输入关键词',
         icon: "none"
       })
     } else {
-      wx.showToast({
-        title: this.data.value,
-        icon: "none"
+      this.setData({
+        list: [],
+        pageNo: 1
       })
+      this.searchPageList()
     }
   },
   // 点击跳转播放器
@@ -74,7 +92,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    this.searchPageList()
   },
 
   /**

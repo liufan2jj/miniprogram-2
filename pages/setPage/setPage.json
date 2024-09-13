@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-cell": "@vant/weapp/cell/index",
+    "van-switch": "@vant/weapp/switch/index"
+  },
+  "navigationBarTitleText": "设置"
+}

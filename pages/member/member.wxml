@@ -27,28 +27,29 @@
   <!-- 会员费用list -->
   <van-grid column-num="3" border="{{ false }}">
     <van-grid-item use-slot wx:for="{{chargeList}}" wx:key="index" data-index="{{index}}" data-original_price="{{item.original_price}}" data-mon="{{item.mon}}" bind:click="checkCharge">
-      <view class="charge_item" style="border: 1px solid {{current===index?'#ec1d39':'#ccc'}};background: {{current===index?'#f7dde1':''}};">
+      <view class="charge_item" style="border: 3px solid {{current===index?'#DFBB82':'#B1B1B1'}};background: {{current===index?'#FCF0DC':'#FFFFFF'}};color: {{current===index?'#6D4E19':'#060400'}};">
         <text class="charge_item_discount">{{item.discount}}</text>
         <view class="charge_item_mon">{{item.mon}}</view>
         <view class="charge_item_Oprice">{{item.original_price}}</view>
         <view class="charge_item_Dprice">{{item.discount_price}}</view>
-        <view class="charge_item_checked" wx:if="{{current===index}}">
+        <!-- <view class="charge_item_checked" wx:if="{{current===index}}">
           √
-        </view>
+        </view> -->
       </view>
     </van-grid-item>
   </van-grid>
   <!-- 开通会员特权 -->
   <view class="btn_warp">
-    <view class="btns">开通会员特权</view>
+    <view class="btns" bind:tap="openMembership">开通会员特权</view>
   </view>
 </view>
 <!-- 精选好剧 -->
 <view class="jing-xuan-content">
-  <van-cell border="{{false}}">
+  <van-cell border="{{false}}" is-link value="查看更多">
     <view class="jing-xuan-title" slot="title">
-      <image class="van-cell-img" src="../../static/img/huaban.png" />
-      <view class="van-cell-text">精选好剧</view>
+      <view class="van-cell-text">
+        <image class="van-cell-img" src="../../static/img/tuijian.png" />精选好剧
+      </view>
     </view>
   </van-cell>
   <van-grid column-num="3" border="{{ false }}">
@@ -56,6 +57,9 @@
       <image class="jing-xuan-img" src="{{item.img}}" bindtap="goPlayVideo"></image>
       <view class="jing-xuan-desc">
         <view class="desc">{{item.desc}}</view>
+        <view class="num">
+          {{item.views_count||'末日·77集'}}
+        </view>
       </view>
     </van-grid-item>
   </van-grid>

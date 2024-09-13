@@ -1,10 +1,21 @@
 /**app.wxss**/
+@import './miniprogram_npm/@vant/weapp/common/index.wxss';
+
 body,
 html {
   width: 100vw;
   height: 100vh;
   padding: 0;
   margin: 0;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+}
+
+button::after {
+  border: none;
 }
 
 page {

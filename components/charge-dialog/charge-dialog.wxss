@@ -1,5 +1,6 @@
 .charge-dialog {
   padding: 16px;
+  background-color: #FEEBE4;
 }
 
 .charge-item {
@@ -14,8 +15,14 @@
 }
 
 .jing-xuan-title {
-  display: flex;
-  align-items: center;
+  font-weight: 500;
+  font-size: 35rpx;
+  color: #000504;
+  line-height: 58rpx;
+  text-align: center;
+  font-style: normal;
+  text-transform: none;
+  padding: 20rpx 0;
 }
 
 .van-cell-img {
@@ -30,7 +37,13 @@
 
 /* 余额 */
 .xx_warp {
-  padding: 6px;
+  font-weight: 400;
+  font-size: 35rpx;
+  color: #070400;
+  line-height: 71rpx;
+  text-align: center;
+  font-style: normal;
+  text-transform: none;
 }
 
 .xx_num {
@@ -79,40 +92,56 @@
 }
 
 .charge_title {
-  text-align: center;
-  padding: 8px 0 0 0;
-  font-size: 12px;
+  padding: 0 20rpx;
+  font-weight: 500;
+  font-size: 35rpx;
+  color: #080500;
+  line-height: 77rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+  background-color: #FFFFFF;
 }
 
 /* 充值列表 */
 .charge_item {
-  width: 100%;
   text-align: center;
-  line-height: 40px;
   position: relative;
-  padding-top: 18px;
+  width: 202rpx;
+  height: 225rpx;
+  background: #FFFFFF;
+  border-radius: 14rpx 14rpx 14rpx 14rpx;
+  border: 3rpx solid #B1B1B1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .charge_item_discount {
   position: absolute;
   top: 0;
   left: 0;
-  font-size: 10px;
-  background-color: #ccc;
-  width: 45px;
-  height: 16px;
-  line-height: 16px;
-  border-radius: 0 0 4px 0;
+  width: 100rpx;
+  height: 42rpx;
+  line-height: 42rpx;
+  background: radial-gradient(0% 0% at 0% 0%, #EC6666 0%, #E60505 0%), #E8AE56;
+  border-radius: 0rpx 14rpx 0rpx 14rpx;
+  font-weight: 400;
+  font-size: 24rpx;
+  color: #FFFFFF;
+  transform: translate(-2.78rpx, -50%);
 }
 
 .charge_item_Oprice {
-  font-size: 24px;
-  font-weight: bold;
+  font-weight: 500;
+  font-size: 48rpx;
+  color: #060400;
 }
 
 .charge_item_Dprice {
-  color: #656161;
-  font-size: 10px;
+  font-weight: 400;
+  font-size: 23rpx;
+  color: #060400;
 }
 
 .charge_item_checked {
@@ -129,14 +158,64 @@
 
 /* 充值提示 */
 .charge_tip_warp {
-  padding: 0 10px;
+  background-color: #FFFFFF;
+  font-weight: 400;
+  font-size: 25rpx;
+  color: #080500;
+  line-height: 44rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+  padding: 0 20rpx;
 }
 
-.charge_tips {
-  color: #6f6c6c;
-  font-size: 12px;
+.charge_check {
+  font-weight: 400;
+  font-size: 25rpx;
+  color: #646466;
+  line-height: 44rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+}
+
+.charge_check_warp {
+  position: absolute;
+  bottom: env(safe-area-inset-bottom);
+  margin: 0 auto;
 }
 
 .charge_rule {
-  color: #1186ec;
+  color: #E60505;
+}
+
+.custom_btn {
+  width: 691rpx;
+  height: 80rpx;
+  background: radial-gradient(0% 0% at 0% 0%, #EC6666 0%, #E60505 0%), #FCE6E6;
+  border-radius: 40rpx 40rpx 40rpx 40rpx;
+  margin: 0;
+  padding: 0;
+  font-family: SourceHanSansSC, SourceHanSansSC;
+  font-weight: 500;
+  font-size: 42rpx;
+  color: #FCE6E6;
+  line-height: 80rpx;
+  text-align: center;
+  font-style: normal;
+  text-transform: none;
+}
+
+.bottomLock {
+  width: 350rpx;
+  height: 37rpx;
+  font-family: SourceHanSansSC, SourceHanSansSC;
+  font-weight: 500;
+  font-size: 37rpx;
+  color: #E60505;
+  line-height: 61rpx;
+  text-align: left;
+  font-style: normal;
+  text-transform: none;
+  margin: 12rpx auto;
 }
