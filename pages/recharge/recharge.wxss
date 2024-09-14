@@ -175,6 +175,11 @@ page {
   margin: 0 auto;
 }
 
+.check_btns {
+  display: flex;
+  align-items: center;
+}
+
 .charge_rule {
   color: #E60505;
 }

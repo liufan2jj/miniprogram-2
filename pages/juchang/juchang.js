@@ -118,11 +118,6 @@ Page({
           icon: "error"
         })
       }
-    } catch (error) {
-      wx.showToast({
-        title: error,
-        icon: "error"
-      })
     } finally {
       wx.stopPullDownRefresh()
       this.setData({
@@ -159,11 +154,6 @@ Page({
           icon: "error"
         })
       }
-    } catch (error) {
-      wx.showToast({
-        title: error,
-        icon: "error"
-      })
     } finally {
       wx.stopPullDownRefresh()
     }
@@ -194,7 +184,6 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh() {
-    console.log(this.data.pageNo)
     this.initPageList()
   },
 

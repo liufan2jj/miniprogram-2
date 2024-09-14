@@ -1,8 +1,6 @@
 {
   "usingComponents": {
-    "van-skeleton": "@vant/weapp/skeleton/index",
     "van-transition": "@vant/weapp/transition/index",
-    "van-loading": "@vant/weapp/loading/index",
     "van-progress": "@vant/weapp/progress/index",
     "van-button": "@vant/weapp/button/index"
   },

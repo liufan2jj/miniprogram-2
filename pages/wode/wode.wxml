@@ -52,14 +52,12 @@
   </view>
 </van-overlay>
 <!-- 底部图片 -->
-<view class="bottom_content">
-  <view class="bottom_warp">
-    <view class="bottom">
-      <text class="bottom_title">看我! 这里可以免费领金币</text>
-      <van-button round size="mini" bind:tap="getsignPage">立即领取</van-button>
-    </view>
-    <image class="bottom_img" src="../../static/img/chiyouzongfene.png" />
+<view class="bottom_warp">
+  <view class="bottom">
+    <text class="bottom_title">看我! 这里可以免费领金币</text>
+    <van-button round size="mini" bind:tap="getsignPage">立即领取</van-button>
   </view>
+  <image class="bottom_img" src="../../static/img/chiyouzongfene.png" />
 </view>
 
 <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">同步手机号</button> -->

@@ -57,11 +57,6 @@ Page({
           icon: "error"
         })
       }
-    } catch (error) {
-      wx.showToast({
-        title: error,
-        icon:"error"
-      })
     } finally {
       this.setData({
         loading: false,

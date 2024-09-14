@@ -197,14 +197,9 @@ page {
 }
 
 /* 底部图片 */
-.bottom_content {
+.bottom_warp {
   position: absolute;
   bottom: env(safe-area-inset-bottom);
-  margin: 0 auto;
-  width: 100%;
-}
-
-.bottom_warp {
   margin: 0 auto;
   width: 717rpx;
   height: 146rpx;

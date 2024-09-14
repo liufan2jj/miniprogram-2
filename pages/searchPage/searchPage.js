@@ -19,8 +19,33 @@ Page({
       value: e.detail,
     });
   },
-  onSearch() {
-    console.log('sss')
+  onConfirm() {
+    if (!this.data.value) {
+      return wx.showToast({
+        title: '请先输入关键词',
+        icon: "none"
+      })
+    } else {
+      this.setData({
+        list: [],
+        pageNo: 1
+      })
+      this.searchPageList()
+    }
+  },
+  onClick() {
+    if (!this.data.value) {
+      return wx.showToast({
+        title: '请先输入关键词',
+        icon: "none"
+      })
+    } else {
+      this.setData({
+        list: [],
+        pageNo: 1
+      })
+      this.searchPageList()
+    }
   },
   async searchPageList() {
     const {
@@ -49,20 +74,6 @@ Page({
         title: msg,
         icon: "error"
       })
-    }
-  },
-  onClick() {
-    if (!this.data.value) {
-      return wx.showToast({
-        title: '请先输入关键词',
-        icon: "none"
-      })
-    } else {
-      this.setData({
-        list: [],
-        pageNo: 1
-      })
-      this.searchPageList()
     }
   },
   // 点击跳转播放器

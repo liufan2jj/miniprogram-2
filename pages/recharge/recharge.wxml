@@ -36,8 +36,10 @@
   <view class="charge_tips">未满18岁的未成年人应在父母或其他监护人的陪同下进行相关付费操作。</view>
 </view>
 <view class="charge_check_warp">
-  <van-checkbox value="{{ checked }}" checked-color="#E60606" bind:change="onChange">
+  <view class="check_btns">
+    <van-checkbox value="{{ checked }}" checked-color="#E60606" bind:change="onChange">
+    </van-checkbox>
     <view class="charge_check">请阅读并知悉 <text bind:tap="gochargeRule" class="charge_rule">《充值规则》</text>、<text bind:tap="gomemberAgreement" class="charge_rule">《会员服务协议》</text></view>
-  </van-checkbox>
+  </view>
   <button bind:tap="openMembership" disabled="{{!checked}}" style="color: {{!checked?'#fff':''}};font-size:{{!checked?'20rpx':''}} ;" class="custom_btn">{{checked?total:'请阅读并知悉充值规则》及《会员服务协议》勾选后确认支付'}}</button>
 </view>

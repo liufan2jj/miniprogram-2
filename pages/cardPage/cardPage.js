@@ -7,30 +7,35 @@ Page({
     cardName: "",
     list: [{
         img: "",
+        time: "",
         state: false,
         title: "睿秀短剧会员1天",
         desc: "全平台免费看剧权益1天"
       },
       {
         img: "",
+        time: "有效期：2024-09-10至2024-09-1",
         state: true,
         title: "睿秀短剧会员2天",
         desc: "全平台免费看剧权益2天"
       },
       {
         img: "",
+        time: "",
         state: false,
         title: "睿秀短剧会员3天",
         desc: "全平台免费看剧权益3天"
       },
       {
         img: "",
+        time: "",
         state: false,
         title: "睿秀短剧会员4天",
         desc: "全平台免费看剧权益4天"
       },
       {
         img: "",
+        time: "",
         state: false,
         title: "睿秀短剧会员5天",
         desc: "全平台免费看剧权益5天"

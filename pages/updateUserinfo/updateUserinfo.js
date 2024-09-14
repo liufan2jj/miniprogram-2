@@ -34,38 +34,28 @@ Page({
     })
   },
   submitUserInfo: async function () {
-    try {
-      this.data.userInfo.nickname = this.data.name
-      this.data.userInfo.avatar_url = this.data.avatarUrl
-      const {
-        code,
-        msg,
-        data
-      } = await upateUserInfo(this.data.userInfo)
-      if (code === 200) {
-        wx.showToast({
-          title: '更新成功',
-          icon: "success"
-        })
-        wx.setStorageSync('userInfo', data);
-        this.setData({
-          avatarUrl: data.avatar_url || '',
-          name: data.nickname || '',
-        })
-      } else {
-        wx.showToast({
-          title: msg,
-          icon: "error"
-        })
-      }
-
-    } catch (error) {
+    this.data.userInfo.nickname = this.data.name
+    this.data.userInfo.avatar_url = this.data.avatarUrl
+    const {
+      code,
+      msg,
+      data
+    } = await upateUserInfo(this.data.userInfo)
+    if (code === 200) {
       wx.showToast({
-        title: error,
+        title: '更新成功',
+        icon: "success"
+      })
+      wx.setStorageSync('userInfo', data);
+      this.setData({
+        avatarUrl: data.avatar_url || '',
+        name: data.nickname || '',
+      })
+    } else {
+      wx.showToast({
+        title: msg,
         icon: "error"
       })
-    } finally {
-
     }
   },
   /**
@@ -78,11 +68,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    this.data.userInfo = wx.getStorageSync('userInfo')
+    this.data.userInfo = wx.getStorageSync('userInfo') || {}
     if (this.data.userInfo) {
       this.setData({
-        avatarUrl: this.data.userInfo.avatar_url || '',
-        name: this.data.userInfo.nickname || '',
+        avatarUrl: this.data.userInfo.avatar_url,
+        name: this.data.userInfo.nickname,
         userInfo: this.data.userInfo
       })
     }
