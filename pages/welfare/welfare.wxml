@@ -1,29 +1,58 @@
-<van-transition show="{{ signNum>total }}" name="slide-down" custom-class="block">
-  <view class="thead">奖励全部解锁，当前累计消费{{signNum}}</view>
-</van-transition>
-<view class="progress_content">
-  <view class="progress_warp">
-    <!-- 进度条上方tips -->
-    <view wx:if="{{signNum<=total}}" class="progress_top" style="left: {{position}};">距离{{nextTarget}}还差{{difference}}</view>
-    <!-- 进度条 -->
-    <van-progress class="custom-class" show-pivot="{{false}}" stroke-width="2px" percentage="{{percentage}}">
-    </van-progress>
-    <!-- 进度条下方 -->
-    <view class="icon_warp" style="background:{{item.num<=signNum?'#2ebb7a':'#e61717'}};left: {{(item.num*ratio)/total+'%'}};" wx:for="{{steps}}" wx:key='index'>
-      <view class="head_icon_warp">
-        <view class="head_icon">
-          <view class="head_icon_title">
-            {{item.desc}}
-          </view>
-          <view>
-            <van-button disabled="{{item.num>=signNum}}" round size="mini">领取</van-button>
-          </view>
-          <view class="head_icon_text">
-            购物满{{item.num}}
-          </view>
+<van-skeleton title avatar row="8" loading="{{ loading }}">
+  <!-- 广告图 -->
+  <view class="jing-xuan-warp">
+    <image class="jing-xuan-banner" src="{{image}}"></image>
+  </view>
+  <!-- 口碑精选 -->
+  <view style="padding: 0 16rpx;">
+    <van-cell border="{{false}}" is-link value="更多">
+      <view class="title-class" slot="title">
+        <view class="van-cell-text">
+          <text class="van-cell-title">口碑精选</text>
+          <text class="van-cell-desc">购物即送平台剧集免费看权益</text>
         </view>
       </view>
+    </van-cell>
+    <van-grid column-num="3" border="{{ false }}">
+      <block wx:for="{{choice}}" wx:key="index">
+        <van-grid-item use-slot>
+          <view class="content-class">
+            <image class="jing-xuan-img" src="{{item.product_images}}"></image>
+            <view class="jing-xuan-desc">
+              <view class="desc">{{item.product_name}}</view>
+              <view class="num">
+                <text>¥ {{item.price_description}}</text>
+                <view style="float: right;">
+                  <van-icon name="cart" />
+                </view>
+              </view>
+            </view>
+          </view>
+        </van-grid-item>
+      </block>
+    </van-grid>
+  </view>
+  <!-- 主推商品 -->
+  <view style="padding: 0 16rpx;">
+    <view class="recommend-warp" wx:for="{{recommend}}" wx:key="index">
+      <van-card tag="热卖" thumb="{{item.product_images}}" thumb-mode="fill">
+        <view slot="title" class="title-class">
+          <view class="title-recommend">{{item.recommend||"暂无"}}</view>
+        </view>
+        <view slot="desc" class="desc-class">
+          <text class="desc-title">{{item.product_name}}</text>
+          <text class="desc-text">{{item.feature}}</text>
+        </view>
+        <text class="price-class" slot="price">¥ {{item.price_description}}</text>
+        <view class="num-class" slot="num" round size="mini">立即下单></view>
+        <view slot="footer" class="custom-footer">
+          <view class="welfare-image-warp">
+            <image class="welfare-avtaurl" src="{{item.comment.avatarUrl}}"></image>
+            <view class="welfare-name">{{item.comment.nickname}}</view>
+          </view>
+          <view wx:if="{{item.comment.content}}" class="welfare-desc van-multi-ellipsis--l3"><text>好评率{{item.comment_good_percent}}%</text> {{item.comment.content}}</view>
+        </view>
+      </van-card>
     </view>
   </view>
-</view>
-<button bind:tap="clickStep">++</button>
+</van-skeleton>

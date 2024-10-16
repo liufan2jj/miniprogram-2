@@ -19,18 +19,8 @@
     </view>
   </view>
   <!-- banner插图 -->
-  <view class="banner_warp" bind:tap="goRecharge">
-    <view wx:if="{{vip_type<=0}}" class="banner_content">
-      <text class="banner_title">开通会员</text>
-      <text class="banner_text">开通会员, 全站影片免费看</text>
-    </view>
-    <view wx:else="{{vip_type>0}}" class="banner_content">
-      <text class="banner_title">{{vipTimeTips}}</text>
-      <!-- <text class="banner_text">尊贵的会员, 全站影片免费看</text> -->
-    </view>
-    <!-- <image class="banner_img" src="../../static/img/iconvip01.png" /> -->
-    <view class="clip_left"></view>
-    <view class="clip_right"></view>
+  <view class="banner_warp">
+    <image bind:tap="goRecharge" class="banner_vip_img" src="../../static/img/banner-vip.png" />
   </view>
 </view>
 <!-- 循环数组 mySet  -->
@@ -53,13 +43,6 @@
 </van-overlay>
 <!-- 底部图片 -->
 <view class="bottom_content">
-  <view class="bottom_warp">
-    <view class="bottom">
-      <text class="bottom_title">看我! 这里可以免费领金币</text>
-      <van-button round size="mini" bind:tap="getsignPage">立即领取</van-button>
-    </view>
-    <image class="bottom_img" src="../../static/img/chiyouzongfene.png" />
-  </view>
+  <image bind:tap="getsignPage" class="bottom_img" src="../../static/img/chiyouzongfene.png" />
 </view>
-
 <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">同步手机号</button> -->

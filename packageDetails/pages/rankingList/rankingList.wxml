@@ -1,0 +1,24 @@
+<van-skeleton title avatar row="8" loading="{{ loading }}">
+  <van-grid column-num="3" border="{{ false }}">
+    <van-grid-item use-slot wx:for="{{list}}" wx:key="index">
+      <view class="jing-xuan_item">
+        <view class="jing-xuan_tips">
+          <image wx:if="{{index==0}}" class="top-image" src="../../../static/img/top1.png" />
+          <image wx:if="{{index==1}}" class="top-image" src="../../../static/img/top1.png" />
+          <image wx:if="{{index==2}}" class="top-image" src="../../../static/img/top1.png" />
+          <image wx:if="{{index>2}}" class="top-image" src="../../../static/img/top1.png" />
+          <text>{{index+1}}</text>
+        </view>
+        <image class="jing-xuan-img" src="{{item.cover_url}}" bindtap="goPlayVideo"></image>
+        <view class="jing-xuan-desc">
+          <view class="desc">{{item.name}}</view>
+          <view class="num">
+            {{item.views_count||'21.4万搜索'}}
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{loadingMore&&list.length>=10}}" class="loading_tips">滑动加载更多...</view>
+      <view wx:if="{{noneMore&&list.length>=10}}" class="loading_tips">暂无更多数据...</view>
+    </van-grid-item>
+  </van-grid>
+</van-skeleton>

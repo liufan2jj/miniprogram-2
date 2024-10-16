@@ -3,34 +3,30 @@
     "pages/welfare/welfare",
     "pages/bingeWatching/bingeWatching",
     "pages/juchang/juchang",
-    "pages/wode/wode",
-    "pages/signPage/signPage",
-    "components/charge-dialog/charge-dialog",
-    "pages/updateUserinfo/updateUserinfo",
-    "pages/searchPage/searchPage",
-    "pages/rankingList/rankingList",
-    "pages/recharge/recharge",
-    "pages/member/member",
-    "pages/transactionDetails/transactionDetails",
-    "pages/userAgreement/userAgreement",
-    "pages/setPage/setPage",
-    "pages/cardPage/cardPage"
+    "pages/wode/wode"
   ],
   "subpackages": [
     {
-      "root": "packageA",
+      "root": "packageDetails",
+      "name": "pack1",
       "pages": [
-        "pages/cat/cat",
-        "pages/dog/dog"
+        "pages/signPage/signPage",
+        "pages/updateUserinfo/updateUserinfo",
+        "pages/searchPage/searchPage",
+        "pages/rankingList/rankingList",
+        "pages/recharge/recharge",
+        "pages/member/member",
+        "pages/transactionDetails/transactionDetails",
+        "pages/userAgreement/userAgreement",
+        "pages/setPage/setPage",
+        "pages/cardPage/cardPage",
+        "pages/login/login"
       ]
     },
     {
-      "root": "packageB",
+      "root": "packageStatic",
       "name": "pack2",
-      "pages": [
-        "pages/apple/apple",
-        "pages/banana/banana"
-      ]
+      "pages": []
     }
   ],
   "window": {
@@ -79,14 +75,14 @@
       {
         "pagePath": "pages/bingeWatching/bingeWatching",
         "text": "追剧",
-        "iconPath": "./static/img/zhuiju.png",
-        "selectedIconPath": "./static/img/zhuiju_after.png"
+        "iconPath": "./static/img/juchang.png",
+        "selectedIconPath": "./static/img/juchang_after.png"
       },
       {
         "pagePath": "pages/juchang/juchang",
         "text": "剧场",
-        "iconPath": "./static/img/juchang.png",
-        "selectedIconPath": "./static/img/juchang_after.png"
+        "iconPath": "./static/img/zhuiju.png",
+        "selectedIconPath": "./static/img/zhuiju_after.png"
       },
       {
         "pagePath": "pages/wode/wode",

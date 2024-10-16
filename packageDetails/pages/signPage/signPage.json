@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-overlay": "@vant/weapp/overlay/index"
+  },
+  "navigationBarTitleText": "签到",
+  "navigationBarTextStyle": "white",
+  "navigationBarBackgroundColor": "#f41919",
+  "backgroundColorTop": "#F41919",
+  "backgroundColorBottom": "#f9f6fc"
+}

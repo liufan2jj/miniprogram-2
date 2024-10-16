@@ -20,10 +20,11 @@
   </van-grid>
   <!-- 精选好剧 -->
   <view>
-    <van-cell border="{{false}}" is-link value="查看更多" >
+    <van-cell border="{{false}}" is-link value="查看更多">
       <view class="jing-xuan-title" slot="title">
         <view class="van-cell-text">
-          <image class="van-cell-img" src="../../static/img/tuijian.png" />精选好剧
+          <image class="van-cell-img" src="../../static/img/tuijian.png" />
+          <text>精选好剧</text>
         </view>
       </view>
     </van-cell>

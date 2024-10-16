@@ -47,13 +47,13 @@ Page({
   // 充值按钮
   goRecharge() {
     wx.navigateTo({
-      url: '/pages/recharge/recharge',
+      url: '/packageDetails/pages/recharge/recharge',
     })
   },
   //跳转修改昵称头像页面
   goUserInfo() {
     wx.navigateTo({
-      url: '/pages/updateUserinfo/updateUserinfo',
+      url: '/packageDetails/pages/updateUserinfo/updateUserinfo',
     })
   },
   // 复制功能
@@ -86,17 +86,17 @@ Page({
     switch (e.currentTarget.dataset.type) {
       case "我的卡券":
         wx.navigateTo({
-          url: '/pages/cardPage/cardPage',
+          url: '/packageDetails/pages/cardPage/cardPage',
         })
         break;
       case "充值记录":
         wx.navigateTo({
-          url: '/pages/transactionDetails/transactionDetails?tabs=1',
+          url: '/packageDetails/pages/transactionDetails/transactionDetails?tabs=1',
         })
         break;
       case "消费明细":
         wx.navigateTo({
-          url: '/pages/transactionDetails/transactionDetails?tabs=0',
+          url: '/packageDetails/pages/transactionDetails/transactionDetails?tabs=0',
         })
         break;
       case "联系客服":
@@ -107,7 +107,7 @@ Page({
         break;
       case "设置":
         wx.navigateTo({
-          url: '/pages/setPage/setPage',
+          url: '/packageDetails/pages/setPage/setPage',
         })
         break;
       case "收藏小程序":
@@ -125,12 +125,12 @@ Page({
   },
   gomemberPage() {
     wx.navigateTo({
-      url: '/pages/member/member',
+      url: '/packageDetails/pages/member/member',
     })
   },
   getsignPage() {
     wx.navigateTo({
-      url: '/pages/signPage/signPage',
+      url: '/packageDetails/pages/signPage/signPage',
     })
   },
   handleContact(e) {
@@ -168,15 +168,17 @@ Page({
         data
       } = await userCenter({})
       if (code === 200) {
+        const storageUseInfo = wx.getStorageSync('userInfo')
         if (data) {
-          const storageUseInfo = wx.getStorageSync('userInfo')
           this.setData({
-            usefInfo: {
-              ...storageUseInfo,
-              data
-            }
+            avatarUrl: data.avatar_url,
+            name: data.nickname,
+            id: storageUseInfo.id,
+            view_point: data.view_point,
+            vip_type: data.vip_type,
+            vip_end_time: data.vip_end_time,
+            vipTimeTips: compareDates(data.vip_end_time)
           })
-          wx.setStorageSync('userInfo', this.data.userInfo);
         }
       } else {
         wx.showToast({
@@ -193,17 +195,7 @@ Page({
    */
   onShow: function () {
     this.data.userInfo = wx.getStorageSync('userInfo')
-    if (this.data.userInfo) {
-      this.setData({
-        avatarUrl: this.data.avatar_url,
-        name: this.data.nickname,
-        id: this.data.userInfo.id,
-        view_point: this.data.userInfo.view_point,
-        vip_type: this.data.userInfo.vip_type,
-        vip_end_time: this.data.userInfo.vip_end_time,
-        vipTimeTips: compareDates(this.data.userInfo.vip_end_time),
-      })
-    }
+    this.initUserinfo()
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

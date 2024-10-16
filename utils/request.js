@@ -43,6 +43,7 @@ newHttp.interceptor.request = config => {
     config.header['Authorization'] = 'Bearer ' + value
   } else {
     console.log("无token || token过期")
+    config.header['Authorization'] = null
   }
   // 这里可以自定义统一处理一下 请求的参数 
   // config.data = buildOptions( config.data )
@@ -77,7 +78,6 @@ newHttp.interceptor.response = response => {
         if (responseToken && responseTokenExpire) {
           // 设置token缓存
           wx.setStorageSync('token', responseToken);
-
           // 当前时间
           // var timestamp = Date.parse(new Date()) / 1000;
           // 加上过期期限
@@ -138,6 +138,26 @@ newHttp.interceptor.response = response => {
       icon: 'none',
       duration: 2000
     })
+    return false
+  } else if (response.statusCode === 401) {
+    if (RedirectTimer) clearTimeout(RedirectTimer)
+    RedirectTimer = null
+    RedirectTimer = setTimeout(() => {
+      let timerS = setTimeout(() => {
+        clearTimeout(timerS)
+        // 这里做退出登录/刷新登录的操作
+        wx.login({
+          async success(res) {
+            if (res.code) {
+              var code = res.code
+              await request.loginUser(code)
+            } else {
+              console.log('登录失败！' + res.errMsg)
+            }
+          }
+        })
+      }, 1500)
+    }, 2000)
     return false
   } else {
     wx.showToast({

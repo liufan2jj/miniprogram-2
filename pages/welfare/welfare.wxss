@@ -31,6 +31,13 @@
   width: 100vw;
 }
 
+.van-card__thumb {
+  width: 270rpx !important;
+  height: 270rpx !important;
+  background: #FCCD94;
+  border-radius: 14rpx 14rpx 14rpx 14rpx;
+}
+
 /* 进度条下方 */
 .icon_warp {
   position: absolute;
@@ -58,4 +65,177 @@
 .head_icon_text {
   font-size: 8px;
   margin: 8px 0;
+}
+
+van-cell .title-class {
+  width: 150%;
+}
+
+.van-cell-text {
+  font-weight: 500;
+  font-size: 33rpx;
+  color: #000504;
+}
+
+.van-cell-title {
+  font-weight: 500;
+  font-size: 33rpx;
+  color: #000504;
+}
+
+.van-cell-desc {
+  font-weight: 400;
+  font-size: 23rpx;
+  color: #000102;
+  margin-left: 12rpx;
+}
+
+.content-class {
+  width: 100%;
+  border: 1px solid #efefef;
+  border-radius: 14rpx 14rpx;
+  height: 287rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.jing-xuan-warp {
+  width: 100vw;
+}
+
+.jing-xuan-banner {
+  width: 100%;
+}
+
+.jing-xuan-img {
+  width: 100%;
+  border-radius: 14rpx 14rpx 0 0;
+  height: 183rpx;
+  background: #FFFFFF;
+}
+
+.jing-xuan-desc {
+  width: 100%;
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.jing-xuan-desc .desc {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: 500;
+  font-size: 27rpx;
+  color: #000000;
+}
+
+.jing-xuan-desc .num {
+  padding: 0 4rpx;
+  font-weight: bold;
+  font-size: 27rpx;
+  color: #E60505;
+}
+
+.recommend-warp {
+  background: #FFFFFF;
+  border-radius: 8px 8px 8px 8px;
+  border: 1px solid #efefef;
+  margin: 25rpx 0;
+}
+
+.title-class {
+  position: relative;
+  height: 53rpx;
+  width: 100%;
+}
+
+.title-recommend {
+  width: 307rpx;
+  height: 53rpx;
+  background: radial-gradient(0% 0% at 0% 0%, #F2BD76 0%, #F6DAA9 0%);
+  border-radius: 14rpx 0rpx 14rpx 0rpx;
+  position: absolute;
+  right: 0px;
+  top: -50%;
+  text-align: center;
+  line-height: 53rpx;
+  font-weight: 500;
+  font-size: 27rpx;
+  color: #AB660B;
+}
+
+.desc-class {
+  display: flex;
+  flex-direction: column;
+  margin: 20rpx 0;
+}
+
+.desc-title {
+  font-weight: 500;
+  font-size: 30rpx;
+  color: #040000;
+
+}
+
+.desc-text {
+  font-weight: 400;
+  font-size: 26rpx;
+  color: #989697;
+}
+
+.price-class {
+  font-weight: bold;
+  font-size: 27rpx;
+  color: #E60505;
+}
+
+.num-class {
+  float: right;
+  width: 120rpx;
+  height: 37rpx;
+  background: #E60505;
+  border-radius: 18rpx;
+  color: #fff;
+  text-align: center;
+  padding: 0 10rpx;
+}
+
+.custom-footer {
+  display: flex;
+  margin-top: 18rpx;
+}
+
+.welfare-image-warp {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.welfare-avtaurl {
+  width: 73rpx;
+  height: 73rpx;
+  border-radius: 50%;
+}
+
+.welfare-name {
+  width: 73rpx;
+  text-align: center;
+  font-weight: 500;
+  font-size: 20rpx;
+  color: #020000;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.welfare-desc {
+  padding: 0px 18rpx;
+  box-sizing: border-box;
+}
+
+.welfare-desc text {
+  color: #E60505;
+  font-weight: 500;
 }

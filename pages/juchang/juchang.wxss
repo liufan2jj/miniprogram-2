@@ -68,9 +68,7 @@ swiper image {
   font-weight: 500;
   font-size: 33rpx;
   color: #000504;
-  line-height: 58rpx;
-  font-style: normal;
-  text-transform: none;
+  display: flex;
 }
 
 .jing-xuan-img {

@@ -40,7 +40,7 @@ Page({
   // 搜索栏跳转搜索页
   goSearchPage() {
     wx.navigateTo({
-      url: '/pages/searchPage/searchPage',
+      url: '/packageDetails/pages/searchPage/searchPage',
     })
   },
   // 排行 福利 Vip 跳转事件
@@ -48,17 +48,17 @@ Page({
     switch (e.currentTarget.dataset.type) {
       case "排行":
         wx.navigateTo({
-          url: '/pages/rankingList/rankingList',
+          url: '/packageDetails/pages/rankingList/rankingList',
         })
         break;
       case "签到":
         wx.navigateTo({
-          url: '/pages/signPage/signPage',
+          url: '/packageDetails/pages/signPage/signPage',
         })
         break;
       case "VIP":
         wx.navigateTo({
-          url: '/pages/recharge/recharge',
+          url: '/packageDetails/pages/recharge/recharge',
         })
         break;
       default:
