@@ -326,10 +326,10 @@ page {
 }
 
 .signTips_content {
-  height: 556rpx;
-  width: 673rpx;
   position: relative;
-  background-color: #fff;
+  height: 868rpx;
+  width: 574rpx;
+  top: -150px;
 }
 
 .signTips_image {
@@ -348,19 +348,19 @@ page {
 
 .sign_title_success {
   font-weight: 500;
-  font-size: 63rpx;
+  font-size: 58rpx;
   color: #0F0202;
 }
 
 .sign_title_num {
   font-weight: 400;
-  font-size: 44rpx;
+  font-size: 34rpx;
   color: #0F0202;
 }
 
 .sign_title_gold {
   font-weight: 400;
-  font-size: 121rpx;
+  font-size: 75rpx;
   color: #E60505;
 }
 

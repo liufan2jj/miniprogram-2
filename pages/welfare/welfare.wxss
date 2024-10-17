@@ -239,3 +239,10 @@ van-cell .title-class {
   color: #E60505;
   font-weight: 500;
 }
+
+.emptyWarp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 20px);
+}

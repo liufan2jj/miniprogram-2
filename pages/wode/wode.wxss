@@ -128,21 +128,22 @@ page {
   margin-bottom: 146rpx;
 }
 
-.title-class {
+.van-cell-img {
+  width: 41rpx;
+  height: 41rpx;
+  margin-right: 12rpx;
+}
+
+.van-cell-text {
   display: flex;
   align-items: center;
 }
 
-.custom-icon {
-  width: 56rpx;
-  height: 56rpx;
-}
-
-.van-cell-text {
-  margin-left: 4px;
+.van-cell-text>text {
   font-weight: 400;
-  font-size: 33rpx;
+  font-size: 36rpx;
   color: #020000;
+  line-height: 36rpx;
 }
 
 .content-btn {

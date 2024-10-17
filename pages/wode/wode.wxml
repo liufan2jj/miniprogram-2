@@ -26,10 +26,10 @@
 <!-- 循环数组 mySet  -->
 <view class="van-cell-warp">
   <van-cell is-link wx:for="{{mySet}}" wx:key="index" bind:click="onMySet" data-type="{{item.name}}">
-    <view class="title-class" slot="title">
-      <image class="custom-icon" src="{{item.img}}" />
+    <view slot="title">
       <view class="van-cell-text">
-        {{item.name}}
+        <image class="van-cell-img" src="{{item.img}}" />
+        <text>{{item.name}}</text>
       </view>
       <button class="content-btn" wx:if="{{item.name=='联系客服'}}" open-type="contact" bindcontact="handleContact" session-from="sessionFrom">{{item.name}}</button>
     </view>

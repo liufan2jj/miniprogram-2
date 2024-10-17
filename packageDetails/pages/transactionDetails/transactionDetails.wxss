@@ -1,0 +1,17 @@
+.title-class {
+  font-weight: 400;
+  font-size: 32rpx;
+  color: #040000;
+}
+
+.label-class {
+  font-weight: 400;
+  font-size: 23rpx;
+  color: #91949A;
+}
+
+.value-class {
+  font-weight: bold;
+  font-size: 43rpx;
+  color: #E60505;
+}

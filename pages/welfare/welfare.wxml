@@ -1,58 +1,64 @@
 <van-skeleton title avatar row="8" loading="{{ loading }}">
-  <!-- 广告图 -->
-  <view class="jing-xuan-warp">
-    <image class="jing-xuan-banner" src="{{image}}"></image>
-  </view>
-  <!-- 口碑精选 -->
-  <view style="padding: 0 16rpx;">
-    <van-cell border="{{false}}" is-link value="更多">
-      <view class="title-class" slot="title">
-        <view class="van-cell-text">
-          <text class="van-cell-title">口碑精选</text>
-          <text class="van-cell-desc">购物即送平台剧集免费看权益</text>
+  <block wx:if="{{dataFlag==true}}">
+    <!-- 广告图 -->
+    <view class="jing-xuan-warp">
+      <image class="jing-xuan-banner" src="{{image}}"></image>
+    </view>
+    <!-- 口碑精选 -->
+    <view style="padding: 0 16rpx;">
+      <van-cell border="{{false}}" is-link value="更多">
+        <view class="title-class" slot="title">
+          <view class="van-cell-text">
+            <text class="van-cell-title">口碑精选</text>
+            <text class="van-cell-desc">购物即送平台剧集免费看权益</text>
+          </view>
         </view>
-      </view>
-    </van-cell>
-    <van-grid column-num="3" border="{{ false }}">
-      <block wx:for="{{choice}}" wx:key="index">
-        <van-grid-item use-slot>
-          <view class="content-class">
-            <image class="jing-xuan-img" src="{{item.product_images}}"></image>
-            <view class="jing-xuan-desc">
-              <view class="desc">{{item.product_name}}</view>
-              <view class="num">
-                <text>¥ {{item.price_description}}</text>
-                <view style="float: right;">
-                  <van-icon name="cart" />
+      </van-cell>
+      <van-grid column-num="3" border="{{ false }}">
+        <block wx:for="{{choice}}" wx:key="index">
+          <van-grid-item use-slot>
+            <view class="content-class">
+              <image class="jing-xuan-img" src="{{item.product_images}}"></image>
+              <view class="jing-xuan-desc">
+                <view class="desc">{{item.product_name}}</view>
+                <view class="num">
+                  <text>¥ {{item.price_description}}</text>
+                  <view style="float: right;">
+                    <van-icon name="cart" />
+                  </view>
                 </view>
               </view>
             </view>
-          </view>
-        </van-grid-item>
-      </block>
-    </van-grid>
-  </view>
-  <!-- 主推商品 -->
-  <view style="padding: 0 16rpx;">
-    <view class="recommend-warp" wx:for="{{recommend}}" wx:key="index">
-      <van-card tag="热卖" thumb="{{item.product_images}}" thumb-mode="fill">
-        <view slot="title" class="title-class">
-          <view class="title-recommend">{{item.recommend||"暂无"}}</view>
-        </view>
-        <view slot="desc" class="desc-class">
-          <text class="desc-title">{{item.product_name}}</text>
-          <text class="desc-text">{{item.feature}}</text>
-        </view>
-        <text class="price-class" slot="price">¥ {{item.price_description}}</text>
-        <view class="num-class" slot="num" round size="mini">立即下单></view>
-        <view slot="footer" class="custom-footer">
-          <view class="welfare-image-warp">
-            <image class="welfare-avtaurl" src="{{item.comment.avatarUrl}}"></image>
-            <view class="welfare-name">{{item.comment.nickname}}</view>
-          </view>
-          <view wx:if="{{item.comment.content}}" class="welfare-desc van-multi-ellipsis--l3"><text>好评率{{item.comment_good_percent}}%</text> {{item.comment.content}}</view>
-        </view>
-      </van-card>
+          </van-grid-item>
+        </block>
+      </van-grid>
     </view>
+    <!-- 主推商品 -->
+    <view style="padding: 0 16rpx;">
+      <view class="recommend-warp" wx:for="{{recommend}}" wx:key="index">
+        <van-card tag="热卖" thumb="{{item.product_images}}" thumb-mode="fill">
+          <view slot="title" class="title-class">
+            <view class="title-recommend">{{item.recommend||"暂无"}}</view>
+          </view>
+          <view slot="desc" class="desc-class">
+            <text class="desc-title">{{item.product_name}}</text>
+            <text class="desc-text">{{item.feature}}</text>
+          </view>
+          <text class="price-class" slot="price">¥ {{item.price_description}}</text>
+          <view class="num-class" slot="num" round size="mini">立即下单></view>
+          <view slot="footer" class="custom-footer">
+            <view class="welfare-image-warp">
+              <image class="welfare-avtaurl" src="{{item.comment.avatarUrl}}"></image>
+              <view class="welfare-name">{{item.comment.nickname}}</view>
+            </view>
+            <view wx:if="{{item.comment.content}}" class="welfare-desc van-multi-ellipsis--l3"><text>好评率{{item.comment_good_percent}}%</text> {{item.comment.content}}</view>
+          </view>
+        </van-card>
+      </view>
+    </view>
+  </block>
+  <!-- 空数据 -->
+  <view class="emptyWarp" wx:else="{{dataFlag==false}}">
+    <van-empty class="custom-image" image="https://img.yzcdn.cn/vant/custom-empty-image.png" description="空空如也,下拉刷新" />
   </view>
 </van-skeleton>

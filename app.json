@@ -22,11 +22,6 @@
         "pages/cardPage/cardPage",
         "pages/login/login"
       ]
-    },
-    {
-      "root": "packageStatic",
-      "name": "pack2",
-      "pages": []
     }
   ],
   "window": {

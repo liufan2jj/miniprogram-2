@@ -1,4 +1,4 @@
-<view class="expire_tips">
+<view wx:if="{{list&&list.length>0}}" class="expire_tips">
   <view class="expire_text">开启卡券即将过期提醒</view>
   <button class="expire_btn">立即订阅</button>
   <view class="expire_close">×</view>
@@ -7,7 +7,7 @@
   <view class="list_warp" wx:for="{{list}}" wx:key="index">
     <view class="xx">
       <view class="xx_warp">
-        <image src="../../../static/img/cardImg.png" class="xx_tx"></image>
+        <image src="../../../static/img/cardImg.png" class="xx_tx" />
         <view class="xx_userWarp">
           <text class="xx_mz">{{item.title}}</text>
           <view>
@@ -21,7 +21,6 @@
     </view>
     <view wx:if="{{item.end_at}}" class="end-time">{{item.end_at}}</view>
   </view>
-
 </view>
 <van-dialog show-confirm-button="{{false}}" use-slot show="{{ show }}" bind:getuserinfo="getUserInfo">
   <view class="dialog_warp">

@@ -1,14 +1,26 @@
-<van-tabs sticky animated swipeable active="{{ active }}" bind:change="onChange">
+<van-tabs title-inactive-color="#010100" title-active-color="#E60505" sticky animated swipeable active="{{ active }}" bind:change="onChange">
   <!-- 消费记录 -->
-  <van-tab title="消费">
+  <van-tab title-style="font-weight: 400;font-size: 36rpx;" title="消费">
     <van-cell-group>
-      <van-cell center wx:for="{{consumptionList}}" wx:key="index" title="{{item.title}}" value="{{item.gold}}" label="{{item.time}}" border="{{ true }}" />
+      <block wx:for="{{consumptionList}}" wx:key="index">
+        <van-cell use-label-slot center border="{{ true }}">
+          <view slot="title" class="title-class">{{item.title}}</view>
+          <view slot="" class="value-class">{{item.gold}}</view>
+          <view slot="label" class="label-class">{{item.time}}</view>
+        </van-cell>
+      </block>
     </van-cell-group>
   </van-tab>
   <!-- 充值记录 -->
-  <van-tab title="充值">
+  <van-tab title-style="font-weight: 400;font-size: 36rpx;" title="充值">
     <van-cell-group>
-      <van-cell center wx:for="{{rechargeList}}" wx:key="index" title="{{item.title}}" value="{{item.gold}}" label="{{item.time}}" border="{{ true }}" />
+      <block wx:for="{{rechargeList}}" wx:key="index">
+        <van-cell use-label-slot center border="{{ true }}">
+          <view slot="title" class="title-class">{{item.title}}</view>
+          <view slot="" class="value-class">{{item.gold}}</view>
+          <view slot="label" class="label-class">{{item.time}}</view>
+        </van-cell>
+      </block>
     </van-cell-group>
   </van-tab>
 </van-tabs>

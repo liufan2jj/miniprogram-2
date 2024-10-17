@@ -9,7 +9,8 @@ Page({
     loading: true, //骨架屏状态
     image: "",
     choice: [],
-    recommend: []
+    recommend: [],
+    dataFlag: {}
   },
   maskText(text) {
     if (text.length > 3) {
@@ -29,13 +30,17 @@ Page({
         },
         code
       } = await welfareActivityInfo({})
-      if (code === 200) {
+      if (code === 200 && this.data) {
         this.setData({
           image,
           choice,
-          recommend
+          recommend,
+          dataFlag: true
         })
       } else {
+        this.setData({
+          dataFlag: false
+        })
         wx.showToast({
           title: msg,
           icon: "error"

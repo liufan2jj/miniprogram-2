@@ -1,1 +1,11 @@
-/* pages/setPage/setPage.wxss */
+.title-class {
+  font-weight: 400;
+  font-size: 33rpx;
+  color: #000303;
+}
+
+.label-class {
+  font-weight: 400;
+  font-size: 26rpx;
+  color: #939393;
+}

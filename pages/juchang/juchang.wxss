@@ -105,3 +105,10 @@ swiper image {
   font-size: 12px;
   text-align: center;
 }
+
+.emptyWarp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 20px);
+}

@@ -1,3 +1,5 @@
-<van-cell center title="自动解锁" label="关闭自动解锁下一集">
+<van-cell use-label-slot center>
+  <view slot="title" class="title-class">自动解锁</view>
+  <view slot="label" class="label-class">关闭自动解锁下一集</view>
   <van-switch checked="{{ checked }}" inactive-color="#E60606" active-color="#07c160" bind:change="onChange" />
 </van-cell>
