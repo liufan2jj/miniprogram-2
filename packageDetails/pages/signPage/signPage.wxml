@@ -46,6 +46,7 @@
             <!-- 签到当天前的金币样式 -->
             <view wx:elif="{{item<=signNum}}" class="head_icon">
               <image style="width: 100%;height: 100%;" src="../../../static/img/singTrue.png" />
+              <view class="before-gold-class">+{{integral}}</view>
             </view>
             <!-- 签到当天后的金币样式 -->
             <view wx:else class="head_icon">
@@ -55,9 +56,9 @@
                 <text class="sign-integral">+{{integral}}</text>
               </view>
             </view>
-          </view>
-          <!-- 签到金币连接线 -->
-          <view wx:if="{{index!=0}}" class='head_line' style="width:{{300/(list.length-1)}}rpx;background:{{item<=signNum?'#FDD24B':''}};">
+            <!-- 签到金币连接线 -->
+            <view wx:if="{{index!=0}}" class='head_line' style="width:{{300/(list.length-1)}}rpx;background:{{item<=signNum?'#FDD24B':''}};">
+            </view>
           </view>
         </view>
       </view>

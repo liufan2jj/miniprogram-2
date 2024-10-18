@@ -121,12 +121,12 @@ page {
 }
 
 .icon_warp {
-  position: relative;
   display: flex;
   align-items: center;
 }
 
 .next-gold-class {
+  position: relative;
   width: 77rpx;
   height: 75rpx;
   display: flex;
@@ -143,6 +143,22 @@ page {
   width: 60rpx;
   height: 60rpx;
   z-index: 1;
+}
+
+.before-gold-class {
+  width: 37rpx;
+  height: 22rpx;
+  background: #F82B25;
+  border-radius: 11rpx 11rpx 11rpx 0;
+  font-weight: 400;
+  font-size: 19rpx;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 22rpx;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translate(40%, -15%);
 }
 
 .afterInner_icon {

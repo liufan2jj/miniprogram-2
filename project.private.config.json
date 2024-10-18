@@ -7,15 +7,15 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/wode/wode",
-          "pathName": "pages/wode/wode",
+          "name": "packageDetails/pages/signPage/signPage",
+          "pathName": "packageDetails/pages/signPage/signPage",
           "query": "",
           "launchMode": "default",
           "scene": null,
           "partialCompile": {
             "enabled": false,
             "pages": [
-              "pages/wode/wode"
+              "packageDetails/pages/signPage/signPage"
             ]
           }
         }
