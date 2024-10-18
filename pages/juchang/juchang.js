@@ -10,7 +10,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    dataFlag: false,
     iconList: [{
         icon: "../../static/img/paihangbang.png",
         text: "排行"
@@ -106,13 +105,13 @@ Page({
         },
         code
       } = await theatreInfo({
+        pageNo: this.data.pageNo,
         pageSize: this.data.pageSize
       })
-      if (code === 200 && data) {
+      if (code === 200) {
         this.setData({
           imgList: banner,
-          jingXuanList: choice,
-          dataFlag: true
+          jingXuanList: choice
         })
       } else {
         wx.showToast({
@@ -120,10 +119,6 @@ Page({
           icon: "error"
         })
       }
-    } catch (error) {
-      this.setData({
-        dataFlag: false
-      })
     } finally {
       wx.stopPullDownRefresh()
       this.setData({

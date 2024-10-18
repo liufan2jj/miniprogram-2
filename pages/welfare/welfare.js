@@ -30,17 +30,13 @@ Page({
         },
         code
       } = await welfareActivityInfo({})
-      if (code === 200 && this.data) {
+      if (code === 200) {
         this.setData({
           image,
           choice,
           recommend,
-          dataFlag: true
         })
       } else {
-        this.setData({
-          dataFlag: false
-        })
         wx.showToast({
           title: msg,
           icon: "error"
